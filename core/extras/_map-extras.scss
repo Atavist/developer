@@ -1,0 +1,60 @@
+/* 
+
+Set styles for map extras
+--------------------------------------------------	*/	
+.leaflet-control-attribution {
+	display: none; /* :( */
+}
+.extra-type-geography > .extra-map-container {
+	height: 400px;
+	}
+
+.extra-type-geography .pop-up-extra-content-wrapper {
+	@include column-of-text;
+	height: 100%;
+	}
+
+.pop-up-extra .extra-map-container {
+	height: 100%;
+	width: 100%;
+	min-height: 400px; /* this feels arbitrary */
+	}
+
+
+.leaflet-map-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-pane, .leaflet-overlay-pane, .leaflet-shadow-pane, .leaflet-marker-pane, .leaflet-popup-pane, .leaflet-overlay-pane svg, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	}
+
+.leaflet-map-pane img {
+	max-height: none !important;
+	}
+
+.leaflet-container a.leaflet-popup-close-button {
+	border: none;
+	@include transition-duration(0ms);
+	}	
+
+.no-touch .leaflet-container a.leaflet-popup-close-button:hover {
+	padding: 4px 5px 0 0;
+	}			
+
+
+.leaflet-popup-content-wrapper {
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	@include transition-duration(0ms);
+	}		
+
+.leaflet-container h2 {
+	margin: 0 0 0.25em;
+	padding: 0;
+	font-size: 1em;
+	width: 100%;
+	max-width: none;
+	}	
+
+.leaflet-popup-content {
+	color: $primaryTextColor;
+	}

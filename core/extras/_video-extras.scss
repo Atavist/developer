@@ -1,0 +1,27 @@
+/* 
+
+Set styles for video extras
+--------------------------------------------------	*/
+
+.video-wrapper {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%; /* roughly 16:9 aspect ratio */
+	}
+
+.video-wrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	}
+
+.video-wrapper video {
+	width: 100%; 
+	}
+
+.video-wrapper.uploaded-video video {
+	height: auto;
+	}

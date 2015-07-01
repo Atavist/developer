@@ -1,0 +1,93 @@
+.atavist-block {
+	@include column-of-text;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	clear: both;
+	}
+
+.atavist-caption {
+	@include atavist-caption;
+
+	.atavist-block-align-full &, &.atavist-block-align-full {
+		@include column-of-text;
+		}
+	}
+
+.atavist-block.atavist-block-align-full {
+	width: 100%;
+	max-width: 100%;
+
+	@if ($columnOfTextAlignment != center) {
+		margin-left: 0;
+		margin-right: 0;
+		}
+	}
+
+.atavist-block.atavist-block-align-center {
+	width: $centeredBlockWidth;
+	}
+
+.atavist-block.atavist-block-align-center.width-of-text-column {
+	width: $textColumnWidth;
+	}
+
+.aligned-extra-wrapper {
+	@include column-of-text;
+
+	@if $columnOfTextAlignment == center {
+		width: $alignedBlockWrapperWidth;
+	} @else {
+		width: (1 + $alignedBlockPercOfTextColumn) * $textColumnWidth + $alignedBlockLeftRightMargin;
+	}
+
+	@media screen and (max-width: $smallBreakpoint) {
+		max-width: 100%; // defers margins of blocks to the blocks themselves
+		}
+	}
+
+.atavist-block-align-left, .atavist-block-align-right {
+	margin-right: $alignedBlockLeftRightMargin;
+	margin-left: $alignedBlockLeftRightMargin;
+	width: $alignedBlockWidth;	
+
+	@if $columnOfTextAlignment == center {
+		max-width: $alignedBlockMaxWidth;
+	} @else {
+		max-width: $textColumnWidth * $alignedBlockPercOfTextColumn;
+	}
+	@media screen and (max-width: $textColumnBreakpoint) {
+		max-width: $alignedBlockPercOfTextColumn * 100%;
+		}		
+	@media screen and (max-width: $smallBreakpoint) {
+		margin-left: $outsideGutterWidth-compressed;
+		margin-right: $outsideGutterWidth-compressed;
+		width: 100%;
+		@include calc(max-width, '100% - #{$totalOutsideGutterWidth-compressed}');
+		}				
+	}
+
+.atavist-block-align-left {
+	float: left;
+	margin-left: 0;
+	@media screen and (max-width: $smallBreakpoint) {
+		margin-left: $outsideGutterWidth-compressed;
+		}	
+	}
+
+.atavist-block-align-right {
+	float: right;
+	margin-right: 0;
+	@media screen and (max-width: $smallBreakpoint) {
+		margin-right: $outsideGutterWidth-compressed;
+		}	
+	}
+
+.atavist-block + .aligned-extra-wrapper > .atavist-block-align-left,
+.atavist-block + .aligned-extra-wrapper > .atavist-block-align-right {
+	margin-top: 0; // left- or right-aligned blocks that follow other blocks don't see their top margin collapse, so this does that manually
+}
+
+
+// Specific blocks
+
+@include atavist-sidebar;

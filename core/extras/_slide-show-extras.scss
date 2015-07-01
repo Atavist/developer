@@ -1,0 +1,93 @@
+/* 
+
+Set styles for slide show extras
+--------------------------------------------------	*/
+
+.slideshow-wrapper {
+	 min-height: 600px; /*This is an arbitrary value and can be changed */
+	}
+
+.pop-up-extra .slideshow-wrapper {
+	width: 100%;
+	max-width: 60rem;
+	position: relative;
+	}
+
+.slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	}
+
+.slide-counter-container {
+	margin-top: 0.65em;
+	margin-bottom: 0.25em;
+	margin-left: 1em;
+	float: right;
+	}
+
+.slide-counter-container .circle {
+	border-radius: 50%;
+	height: 0.75rem;
+	width: 0.75rem;
+	border: 2px solid rgba(0,0,0,0.125);
+	float: left;
+	margin-left: 0.2em;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	cursor: pointer;
+	}
+
+.no-touch .slide-counter-container .circle:hover, .slide-counter-container .circle.current-slide {
+	background-color: rgba(0,0,0,0.125);
+	border: none;
+	}
+
+.slideshow-wrapper .caption {
+	clear: left;
+	}
+
+.pop-up-extra.slideshow-extra .caption {
+	padding-top: 0.5em;
+	margin: 0.25em 0 3em;
+	}
+
+.pop-up-extra.slideshow-extra .slide-counter-container {
+	margin-top: 1em;
+	}		
+
+.slideshow-wrapper .arrow {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	z-index: 3;
+	font-size: 0.3em;
+	margin: 0;
+	padding: 1.5em;
+	border-radius: 2px;
+	}
+
+.no-touch .slideshow-wrapper:hover .arrow {
+	background-color: rgba(0,0,0,0.275);
+	}	
+
+.no-touch .slideshow-wrapper .arrow:hover {
+	background-color: rgba(0,0,0,0.5);
+	}		
+
+.slideshow-wrapper .arrow .arrow-shape {
+	border-color: rgba($alternateTextColor,0.75);
+	}	
+
+.no-touch .slideshow-wrapper .arrow:hover .arrow-shape {
+	border-color: $alternateTextColor;
+	}		
+
+.slideshow-wrapper .arrow.left-arrow {
+	left: 0.75rem;
+	}
+
+.slideshow-wrapper .arrow.right-arrow {
+	right: 0.75rem;
+	}	

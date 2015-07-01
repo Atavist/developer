@@ -1,0 +1,127 @@
+/*	PAYWALL MESSAGING STYLES  */
+
+.on-page-paywall-message {
+	background-color: rgba(0,168,255, 0.2);
+	width: 50rem;
+	margin: 0 auto;
+	max-width: calc(100% - 8rem);
+	padding: 2rem 2rem 1.5rem;
+	box-sizing: border-box;
+	}
+
+.on-page-paywall-message h2,  .on-page-paywall-message p,  .on-page-paywall-message p:first-of-type {
+	width: 100% !important;
+	max-width: 100% !important;
+	padding: 0 !important;
+	font-family: Helvetica;
+	margin-top: 0;
+	}	
+
+.notification-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.65);
+	z-index: 6;
+	color: white;
+	display: none;
+	}
+
+.notification-box {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	@include transform(translateX(-50%) translateY(-50%));
+	width: 40rem;
+	max-width: 100%;
+	background-color: black;
+	padding: 1rem;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	text-align: left;
+	@media screen and (max-width: $smallBreakpoint) {
+		@include transform(translateX(0) translateY(0));
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		}
+	}	
+
+.notification-box-inside-wrapper {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	}	
+	
+.notification-box-closer {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	position: absolute;
+	top: -0.5rem;
+	left: 0;
+	line-height: 1;
+	font-size: 2rem;
+	font-weight: 200;
+	opacity: 0.5;
+	vertical-align: middle;
+	cursor: pointer;
+	@include transition-duration($defaultTransitionDuration);
+	}
+
+.notification-box-closer:hover {
+	opacity: 1;
+	}	
+	
+.notification-box-message {
+	padding: 2rem;
+	}							
+
+.notification-overlay p, .notification-overlay h2, .notification-overlay h3, .notification-overlay h4, .bottom-notification p {
+	font-family: Helvetica;
+	font-size: 1rem;
+	font-weight: 300;
+	width: 100%;
+	max-width: 100%;
+	padding: 0;
+	}
+
+.notification-overlay h2 {
+	font-weight: 600;
+	font-size: 1.35em;
+	margin-top: 1em;
+	}
+
+.paywall-purchase-button, .paywall-purchase-button:hover, .paywall-purchase-button:visited {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 1.5em 2.5em !important;
+	display: inline-block;
+	background-color: rgb(0,168,255) !important;
+	color: whitesmoke;
+	margin-top: 2rem;
+	@include transition-duration($defaultTransitionDuration);
+	margin-right: 1rem;
+	}	
+
+.paywall-purchase-button:hover {
+	opacity: 0.75;
+	}
+
+.bottom-notification {
+	box-sizing: border-box;
+	background-color: rgb(30,30,30);
+	color: white;
+	-webkit-font-smoothing: antialiased;
+	position: fixed;
+	bottom: 0;
+	@include calc(width, '100% - 16rem');
+	z-index: 999;
+	margin: 2rem auto;
+	left: 8rem;
+	padding: 0.35rem 0.5rem;
+	text-align: center;
+	border-radius: 2px;
+	display: none;
+	}

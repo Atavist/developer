@@ -1,0 +1,21 @@
+.built-with-atavist {
+	opacity: 0.8;
+	position: absolute;
+	bottom: 21px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	border-bottom: none;
+	.cover-only & { // This covers a weird case: a NOZ with a "Simple" title design in place
+		display: none;
+	}
+}
+
+.no-touch .built-with-atavist:hover {
+	opacity: 1;
+	border-bottom: none;
+	}
+

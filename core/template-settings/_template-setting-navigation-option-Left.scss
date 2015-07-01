@@ -1,0 +1,186 @@
+
+.template-setting-navigation-option-Left {
+
+	/* NAV COLORS */	
+
+	nav {
+		background-color: $drawerNavColor;
+		}
+
+	.nav-story-title a {
+		color: $navLinkColor-hover;
+		&:hover {
+			color: $navLinkColor-hover;
+			}
+		}		
+	
+	nav li a {
+		color: $navLinkColor;
+		background-color: $navLinkColorBackgroundColor;
+		}	
+
+	.no-touch & nav li:hover a {
+		color: $navLinkColor-hover;
+		background-color: $navLinkColorBackgroundColor-hover;
+		}	
+
+	nav li a.current-nav, .no-touch & nav li a.current-nav:hover {
+		color: $navLinkColor-currentSection;
+		background-color: $navLinkColorBackgroundColor-currentSection;		
+		}	
+
+	@media screen and (max-width: $mediumBreakpoint) {
+
+		.nav-menu-button rect {
+			fill: $hamburgerButtonBackgroundFill;
+			}	
+
+		.nav-menu-button path, 
+		.no-touch & .nav-menu-button:hover path {
+			fill: $alternateTextColor;
+			}
+		}					
+
+
+	/* CORE LEFT NAV SIZING, SPACING, AND STYLES */
+
+	nav {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: $navWidth;
+		height: 100%;
+		z-index: -1;
+		padding-top: $leftNavPaddingTop;
+		padding-bottom: $leftNavPaddingBottom;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		@include box-sizing(border-box);		
+		-webkit-font-smoothing: antialiased;
+		opacity: 0; /* This keeps the nav initially hidden, which makes it less of a pressence in mobile contexts */
+		}
+
+	nav a, 
+	.no-touch & nav a:hover {
+		border-bottom: none;
+		}
+		
+	.nav-above-in-view {
+		z-index: 1;
+		}	
+
+	article.nav-revealed, 
+	.nav-menu-button.nav-revealed, 
+	.left-arrow.nav-revealed {
+		@include transform(translateX($navWidth));
+		}
+
+	article.nav-revealed3d, 
+	.nav-menu-button.nav-revealed3d, 
+	.left-arrow.nav-revealed3d {
+		@include transform(translateX($navWidth) translateZ(0));
+		}	
+
+	.nav-story-title {
+		@include left-nav-story-title;
+		}	
+	
+	.nav-chapter-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		}
+	
+	.nav-chapter-list a {
+		@include section-listing;
+		}
+	
+	.nav-story-title a:after {
+		content: "\00A0\2191";
+		font-size: 0.75em;
+		opacity: 0;			
+		}
+
+	.no-touch & .nav-story-title a:hover:after {
+		opacity: 0.375;
+		}	
+
+	.nav-share-and-soundtrack-icons {
+		display: block;
+		}				
+		
+	.mobile-nav-icons {
+		display: none;
+		padding-left: $leftNavPaddingLeft;
+		padding-right: $leftNavPaddingRight;
+		margin-bottom: 2em;
+		margin-top: -0.75em;
+		}			
+
+	.mobile-nav-icons a {
+		margin-right: 0.5em;
+		opacity: 0.25;
+		}
+
+	.no-touch & .mobile-nav-icons a:hover {
+		opacity: 0.75;
+		}
+
+	.mobile-nav-icons .template-icon path, 
+	.no-touch .mobile-nav-icons .template-icon:hover path {
+		stroke: none;
+		fill: #f5f5f5;
+		fill-opacity: 1;
+		}
+
+	@media screen and (max-width: $mediumBreakpoint) {
+		
+		.nav-share-and-soundtrack-icons {
+			display: none;
+			}
+
+		.mobile-nav-icons {
+			display: block;
+			}
+
+		.nav-menu-button {
+			opacity: 0.75;
+			top: 0.97rem;
+			margin-left: 0.9rem;
+			}	
+
+		.nav-menu-button svg {
+			width: 28px;
+			height: 28px;
+			}	
+
+		.nav-menu-button path, 
+		.no-touch & .nav-menu-button:hover path {
+			stroke: none;
+			fill-opacity: 1;
+			}
+		}
+
+	@media screen and (max-width: $smallBreakpoint) {
+
+		nav {
+			width: $navWidth-smallBreakpoint;
+			}
+
+		article.nav-revealed, 
+		.nav-menu-button.nav-revealed, 
+		.left-arrow.nav-revealed {
+			@include transform(translateX($navWidth-smallBreakpoint));
+			}	
+
+		article.nav-revealed3d, 
+		.nav-menu-button.nav-revealed3d, 
+		.left-arrow.nav-revealed3d {
+			@include transform(translateX($navWidth-smallBreakpoint) translateZ(0));
+			}			
+
+		}
+
+	}

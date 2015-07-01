@@ -1,0 +1,55 @@
+@function strip-units($number) { //used below to case around column margin values of 0
+  @return $number / ($number * 0 + 1);
+}
+
+@mixin column-alignment($alignment, $marginSize) {
+
+	@if $alignment == left {
+		// float: left;
+		@include calc(margin-left, '#{$outsideGutterWidth} + #{$marginSize}');
+		margin-right: auto;
+	} @else if $alignment == right {
+		// float: right;
+		@include calc(margin-right, '#{$outsideGutterWidth} + #{$marginSize}');
+		margin-left: auto;
+	} @else {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@mixin column-of-text($useHelperBreakpointClass: false) { // why? so that other settings, like nav styles or pagination styles, can inherit all this.
+	@include box-sizing(border-box);
+	width: $textColumnWidth;
+	max-width: 100%; /* fallback for older browsers that do not support calc */
+
+
+	@if strip-units($columnOfTextMarginSize) == 0 {
+		@include calc(max-width, '100% - #{$totalOutsideGutterWidth}'); 
+	} @else {
+		@include calc(max-width, '100% - #{$columnOfTextMarginSize} - #{$totalOutsideGutterWidth}'); 
+	}
+
+	@include column-alignment($columnOfTextAlignment, $columnOfTextMarginSize);
+
+	@if $useHelperBreakpointClass == true {
+	    .small-breakpoint & {
+			@include calc(max-width, '100% - #{$totalOutsideGutterWidth-compressed}');
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+	    }
+	} 
+
+	@media screen and (max-width: $smallBreakpoint) {
+		@include calc(max-width, '100% - #{$totalOutsideGutterWidth-compressed}');
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		}
+
+
+
+}

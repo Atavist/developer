@@ -1,0 +1,76 @@
+.extra {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	}
+
+.centered { /* also applies to slideshow chapters */
+	@include column-of-text;
+	width: 50rem;
+	}
+
+.caption {
+	margin: 0.25em 0;
+	}
+
+.caption-title, .caption-body, .caption-body:before {
+	display: inline;
+	}
+
+.caption-title + .caption-body:before {
+	content: " | ";
+	font-weight: 200;
+	opacity: 0.5;
+	padding: 0 0.25em;
+	}
+.caption-title + .caption-body p {
+	display: inline;
+	float: none;
+	margin-left: 0;
+	margin-right: 0;
+	}		
+
+.full-width .caption {
+	padding: 0 0.5rem;
+	}
+
+.aligned-extra-wrapper {
+	max-width: 80rem;
+	width: inherit;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+.aligned-left, .aligned-right {
+	margin-right: 2rem;
+	margin-left: 2rem;
+	width: 40%;
+	max-width: 30rem;
+	}
+
+.aligned-left {
+	float: left;
+	margin-left: 4rem; /* to accommodate nav buttons */
+	}
+
+.aligned-right {
+	float: right;
+	margin-right: 4rem;
+	}
+
+.inline-extra {
+	position: relative; /* for the extra closer button to position correctly? */
+	}
+
+.pop-up-extra p, .pop-up-extra  pre, .pop-up-extra  ul, .pop-up-extra  ol {
+	width: 100%;
+	max-width: 100%;
+	padding: 0;
+	}	
+
+@media screen and (max-width: $smallBreakpoint) {			
+
+	.pop-up-extra-wrapper {
+		padding: 4em 2em 2em;
+		}
+
+	}

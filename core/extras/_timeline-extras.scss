@@ -1,0 +1,88 @@
+/* 
+
+Set styles for timeline extras
+--------------------------------------------------	*/	
+
+.extra-type-timeline {
+	height: 650px;
+	}
+
+.extra-type-timeline .pop-up-extra-wrapper {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	}
+
+.extra.centered.extra-type-timeline {
+	width: 100%;
+	max-width: none;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
+	}
+
+.extra-type-timeline .closer {
+	z-index: 50000;
+	}
+
+.storyjs-embed {
+	background-color: transparent;
+	}
+
+.extra-type-timeline .pop-up-extra-wrapper .storyjs-embed {
+	background-color: white;
+	}
+
+.vco-storyjs {
+	background-color: transparent;
+	}
+
+.vco-container {
+	width: 100%;
+	}
+	
+.extra-type-timeline h3 {
+	max-width: none;
+	}
+
+.extra-type-timeline .nav-container .icon {
+	bottom: 0.5rem !important;
+	font-size:0.3rem !important;
+	overflow: visible !important;
+	}
+
+
+
+/* TIMELINE ARROWS (INHERIT FROM GLOBAL ARROW STYLES) */
+
+.extra-type-timeline .nav-container .icon {
+	@extend .arrow;
+	}
+
+.extra-type-timeline .nav-container .icon { /* The second selector is for timeline extra arrows */
+ 	position: absolute;
+	 }
+
+.extra-type-timeline .nav-container .icon:before {
+	@extend .arrow-shape;
+	}
+
+.extra-type-timeline .nav-next .nav-container .icon {
+	@extend .right-arrow;
+	}	
+
+.extra-type-timeline .nav-previous .nav-container .icon {
+	@extend .left-arrow;
+	}	
+
+.extra-type-timeline .nav-next .nav-container .icon:before {
+	@include right-arrow-shape;
+	}	
+
+.extra-type-timeline .nav-previous .nav-container .icon:before {
+		@include left-arrow-shape;
+	}	
+
+.no-touch .extra-type-timeline .nav-previous:hover .nav-container .icon:before, 
+.no-touch .extra-type-timeline .nav-next:hover .nav-container .icon:before {
+	@include arrow-hover;
+	}

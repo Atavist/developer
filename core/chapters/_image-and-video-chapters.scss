@@ -1,0 +1,36 @@
+/* 
+
+Styles unique to image and video chapters
+--------------------------------------------------	*/	
+
+$extraMarginTop: 8rem;
+
+.chapter-type-1, .chapter-type-10 { /* image and video chapters */
+	margin-top: $extraMarginTop;
+	position: relative;
+	}
+
+.chapter-type-1:before, .chapter-type-10:before { /* image and video chapters */
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	top: -$extraMarginTop;
+	height: $extraMarginTop;
+	z-index: -1; 
+	}
+	
+.chapter-type-1 .image-chapter-wrapper, .chapter-type-10 .video-chapter-wrapper {
+	margin-top: -$extraMarginTop;
+	@media screen and (max-width: $smallBreakpoint) {			
+		margin-top: -5rem;
+		}			
+	}
+	
+.chapter-type-1 .chapter-title, .chapter-type-10 .chapter-title {
+	padding-top: 1em;
+	}	
+	
+.chapter-type-1 .caption, .chapter-type-10 .caption {
+	margin-bottom: 0;
+	}

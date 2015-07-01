@@ -1,0 +1,93 @@
+	/*
+
+
+	Set styles for audio extras
+	--------------------------------------------------	*/
+
+	.pop-up-audio-extra-wrapper {
+		margin: 0 auto;
+		padding: 0 1rem;
+		}
+
+	.audio-extra audio {
+		height: 0;
+		}
+
+	.audio-extra .player-chrome {
+		@include column-of-text;
+		border-top: 1px solid rgba(0,0,0,0.125);
+		border-bottom: 1px solid rgba(0,0,0,0.125);
+		padding-top: 1rem;
+		margin-bottom: 0.65rem;
+		max-width: 100% !important;
+		}
+
+	.pop-up-extra.audio-extra .player-chrome {
+		margin-left: auto;
+		margin-right: auto;
+		}	
+
+	.audio-extra.played-once .player-chrome {
+		border-bottom: 1px solid rgb(40,40,40);
+		}
+
+	.play-pause-control {
+		@include calc(margin-top, '2rem - 10px');
+		@include calc(margin-bottom, '2rem - 10px');
+		text-align: center;	
+		@media screen and (max-width: $verySmallBreakpoint) {
+			@include calc(margin-bottom, '2rem - 22px')
+			}	
+		}		
+
+	.player-chrome circle, .player-chrome polygon {
+		stroke: rgb(40,40,40);
+		fill: none;
+		}
+
+	.player-chrome rect {
+		fill: rgb(40,40,40);
+		}	
+
+	.audio-extra .play-button, .audio-extra.playing .pause-button {
+		display: inline;
+		}
+
+	.audio-extra.playing .play-button, .audio-extra .pause-button {
+		display: none;
+		}
+
+	.duration-indicator {
+		display: inline-block;
+		position: relative;
+		top: -1.925em;
+		padding: 0 1rem;
+		width: 6rem;
+		font-size: 0.85em;
+		color: rgba(40,40,40,0.5);
+		@media screen and (max-width: $verySmallBreakpoint) {
+			width: 3rem;
+			top: -2.3em;
+			}
+		}			
+
+	.scrubber-bar {
+		position: relative;
+		width: 100%;
+		height: 10px;
+		}
+
+	.scrubber-bar > .scrubber-progress {
+		position: absolute;
+		width: 0%;
+		height: 100%;
+		background-color: rgb(40,40,40);
+		}
+
+	.audio-extra .play-pause-control svg, .audio-extra .scrubber-bar {
+		cursor: pointer;
+		}
+
+	.audio-extra .caption {
+		margin-bottom: 1rem;
+		}			

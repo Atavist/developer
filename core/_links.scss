@@ -1,0 +1,21 @@
+
+// Link styles
+
+a { // essentially a reset, to nuke default styles
+	color: inherit;
+	text-decoration: none;
+	}
+
+a img {
+	border: none;
+	}
+
+.inlineContentWrapper.inlineContentLink, .regular-link, .regular-link:visited {
+	@include link-styles;	
+	}
+
+// Pop-up extra styles
+
+.inlineContentWrapper:not(.inlineContentLink), .inlineContentWrapper:not(.inlineContentLink):visited, .popup-block-trigger, .popup-block-trigger:visited {
+	@include inline-block-styles;
+	}	

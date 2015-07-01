@@ -1,0 +1,111 @@
+
+	@-webkit-keyframes pop-up-slide-down {
+		0%   { max-height: 0; }
+		100% { max-height: 600px; } /* this is a problem. */
+		}		
+		
+	@keyframes pop-up-slide-down {
+		0%   { max-height: 0; }
+		100% { max-height: 600px; } /* this is a problem. */
+		}
+
+
+
+	.template-setting-pop-up-style-Drawer {
+
+		.pop-up-audio-extra-wrapper, .pop-up-extra-content-wrapper {
+			@include column-of-text; // why? so that other settings, like nav styles or pagination styles, can inherit all this. 
+			}
+
+
+		/* DRAWER WRAPPER COLOR */
+
+		.pop-up-extra-wrapper {
+			background-color: rgba(100,100,100,0.125);
+			}
+
+
+		/* AUDIO PLAYER-SPECIFIC SPACING ADJUSTMENTS SETTINGS */
+
+		.pop-up-extra.audio-extra .pop-up-extra-wrapper {
+			padding-top: 4em;
+			}
+
+		.pop-up-audio-extra-wrapper {
+			max-width: 100%;
+			}	
+
+
+		/* SLIDESHOW-SPECIFIC SPACING ADJUSTMENTS SETTINGS */
+
+		.pop-up-extra .slideshow-wrapper {
+			width: 50rem;
+			max-width: -webkit-calc(100% - $totalOutsideGutterWidth);
+			max-width: calc(100% - $totalOutsideGutterWidth);
+			position: relative;
+			margin: 0 auto;
+			}	
+
+		/* BASIC SETTINGS */
+
+		.pop-up-extra {	
+			@include animation(pop-up-slide-down ease-in $defaultTransitionDuration 1);				
+			overflow: hidden;
+			margin: 0;
+			position: relative;
+			clear: both;
+			}
+
+		.pop-up-extra-wrapper {
+			margin: 2em auto;
+			padding: 2em 0;
+			}
+			
+		.pop-up-extra-content-wrapper {
+			margin: 0 auto;
+			}
+
+		.closer {
+			position: absolute;
+			top: 1.18em;
+			left: 0.4em;
+			font-size: 2.275em;
+			font-weight: 200;
+			cursor: pointer;
+			opacity: 0.5;
+			width: 2rem;
+			height: 2rem;
+			text-align: center;
+			}		
+
+		.no-touch & .closer:hover {
+			opacity: 1;
+			}	
+
+		.pop-up-extra-content-wrapper	{
+			margin: 0 auto;
+			}		
+
+		@media screen and (max-width: $smallBreakpoint) {
+			
+			.pop-up-extra-content-wrapper {
+				max-width: 100%;
+				}
+
+			}												
+
+		}
+
+			
+			
+	
+
+
+		
+
+		
+	
+			
+	
+
+

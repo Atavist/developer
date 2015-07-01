@@ -1,0 +1,1271 @@
+// DEFAULT VARIABLES — AKA "THURBER"
+// By Thomas Rhiel
+
+
+// 
+//	COLORS
+//	======
+//
+
+/// Defines the primary background color of a project, to be used where section content is rendered.
+/// @group Colors
+/// @type Color
+/// @see $primaryTextColor
+$primaryBackgroundColor: #f9f9f9 !default;
+
+
+/// Defines the primary text color of a project, to be used where section content is rendered.
+/// @group Colors
+/// @type Color
+/// @see $primaryBackgroundColor
+$primaryTextColor: rgb(50,50,50) !default;
+
+
+/// A heuristic for determining whether the background color is relatively dark, 
+/// which has implications for icon colors and how the alternate background color is generated.
+/// @group Colors
+/// @type Boolean
+/// @ignore
+$_bg-is-dark: lightness($primaryBackgroundColor) < 75;
+
+
+/// Defines the alternate background color of a project, to be used outside of areas where the 
+/// main section content is rendered, e.g., for navigational areas. 
+///
+/// If not specified, alternate background and text colors will be generated automatically based on
+/// the values of the primary background and text colors.
+/// @group Colors
+/// @type Color
+/// @see $alternateTextColor
+$alternateBackgroundColor: null !default;
+
+
+/// Defines the alternate text color of a project, to be used outside of areas where the 
+/// main section content is rendered, e.g., for navigational areas. 
+///
+/// If not specified, alternate background and text colors will be generated automatically based on
+/// the values of the primary background and text colors.
+/// @group Colors
+/// @type Color
+/// @see $alternateBackgroundColor
+$alternateTextColor: null !default;
+
+@if ($_bg-is-dark == false) { // this value could well change, or the heuristic entirely
+	$alternateBackgroundColor: darken($primaryTextColor, 10%) !default;
+	$alternateTextColor: $primaryBackgroundColor !default;
+} @else {
+	$alternateBackgroundColor: desaturate(lighten($primaryBackgroundColor, 7.5%), 20%) !default; // goofy values here, but took some eyeballing for this to work well
+	$alternateTextColor: $primaryTextColor !default;		
+}
+
+
+/// Defines the background fill color of the navigational icon, which appears
+/// behind the icon in certain small-screen contexts. 
+///
+/// If not specified, it will be generated automatically based on the alternate background color.
+/// @group Colors
+/// @type Color
+/// @see $alternateBackgroundColor
+$hamburgerButtonBackgroundFill: lighten($alternateBackgroundColor, 10%) !default;
+
+
+/// Defines the background fill color of the fixed icons that appear within projects 
+/// as they look under most circumstances, superimposed upon the project’s background color.
+///
+/// If not specified, it will be generated automatically based on the primary text color.
+/// @group Colors
+/// @type Color
+/// @see $primaryTextColor
+$primaryIconColor: $primaryTextColor !default;
+
+
+/// Defines the color of the stroke of the fixed icons that appear within projects 
+/// as they look under most circumstances, superimposed upon the project’s background color.
+///
+/// If not specified, it will be generated automatically.
+/// @group Colors
+/// @type Color
+/// @see $primaryIconColor
+$primaryIconColor-Stroke: if($_bg-is-dark, $primaryTextColor, $primaryBackgroundColor) !default;
+
+
+/// Defines the background fill color of the fixed icons that appear within projects 
+/// as they look when positioned on the alternate background color, as in a navigational element.
+///
+/// If not specified, it will be generated automatically.
+/// @group Colors
+/// @type Color
+/// @see $alternateIconColor-Stroke
+$alternateIconColor: if($_bg-is-dark, $primaryTextColor, $primaryBackgroundColor) !default;
+
+
+/// Defines the stroke color of the fixed icons that appear within projects 
+/// as they look when positioned on the alternate background color, as in a navigational element.
+///
+/// If not specified, it will be generated automatically based on the primary text color.
+/// @group Colors
+/// @type Color
+/// @see $alternateIconColor
+/// @see $primaryTextColor
+$alternateIconColor-Stroke: $primaryTextColor !default;
+
+
+/// Defines the text color of links to sections that appear in various navigation styles. 
+///
+/// If not specified, it will be generated automatically based on the alternate text color.
+/// @group Colors
+/// @type Color
+/// @see $alternateTextColor
+$navLinkColor: rgba($alternateTextColor,0.6) !default;
+
+
+/// Defines the hover state text color of links to sections that appear in various navigation styles. 
+///
+/// If not specified, it will be generated automatically based on the alternate text color.
+/// @group Colors
+/// @type Color
+/// @see $alternateTextColor
+$navLinkColor-hover: rgba($alternateTextColor,0.85) !default;
+
+
+/// Defines the text color of the current section among the section links
+/// that appear in various navigation styles. 
+///
+/// If not specified, it will be generated automatically based on the alternate text color.
+/// @group Colors
+/// @type Color
+/// @see $alternateTextColor
+$navLinkColor-currentSection: rgba($alternateTextColor,0.85) !default;
+
+
+/// Defines the background color of links to sections that appear in various navigation styles. 
+///
+/// @group Colors
+/// @type Color
+$navLinkColorBackgroundColor: transparent !default;
+
+
+/// Defines the hover state background color of links to sections that appear in various navigation styles. 
+///
+/// @group Colors
+/// @type Color
+$navLinkColorBackgroundColor-hover: rgba($alternateTextColor,0.05) !default;
+
+
+/// Defines the background color of the current section among the section links
+/// that appear in various navigation styles.
+///
+/// @group Colors
+/// @type Color
+$navLinkColorBackgroundColor-currentSection: rgba($alternateTextColor,0.1) !default;
+
+
+// 
+//	ICONS
+//	=====
+//
+
+
+/// Defines the hover state opacity of the fixed icons that appear within projects.
+///
+/// @group Icons
+/// @type Number
+$navLinkOpacity-Hover: 1 !default;
+
+
+// declaring these as global variables
+
+/// Defines the default fill opacity of the fixed icons that appear within projects.
+///
+/// @group Icons
+/// @type Number
+$navIconFillOpacity: null !default;
+
+
+/// Defines the default stroke opacity of the fixed icons that appear within projects.
+///
+/// @group Icons
+/// @type Number
+$navIconStrokeOpacity: null !default;
+
+
+/// Defines the default stroke width of the fixed icons that appear within projects.
+///
+/// @group Icons
+/// @type Number
+$navIconStrokeWidth: null !default;
+
+
+/// Defines the hover state fill opacity of the fixed icons that appear within projects.
+///
+/// @group Icons
+/// @type Number
+$navIconFillOpacity-Hover: null !default;
+
+
+/// Defines the hover state stroke opacity of the fixed icons that appear within projects.
+///
+/// @group Icons
+/// @type Number
+$navIconStrokeOpacity-Hover: null !default;	
+
+@if($_bg-is-dark == false) {
+	$navIconFillOpacity: 0.125 !default;
+	$navIconStrokeOpacity: 0.75 !default;
+	$navIconStrokeWidth: 0.8px !default;
+
+	$navIconFillOpacity-Hover: 0.25 !default;
+	$navIconStrokeOpacity-Hover: 0.95 !default;		
+} @else {
+	$navIconFillOpacity: 0.75 !default;
+	$navIconStrokeOpacity: 0 !default;
+	$navIconStrokeWidth: 0 !default;
+
+	$navIconFillOpacity-Hover: 0.95 !default;
+	$navIconStrokeOpacity-Hover: 0 !default;			
+}
+
+/// Defines the fill opacity of the fixed icons that appear within projects
+/// when the icons appear superimposed on certain title designs, namely
+/// those with background images, videos, or colors that depart from 
+/// the project norm.
+///
+/// @group Icons
+/// @type Number
+$navIconFillOpacity-onCover: 0.75 !default;
+
+
+/// Defines the stroke width of the fixed icons that appear within projects
+/// when the icons appear superimposed on certain title designs, namely
+/// those with background images, videos, or colors that depart from 
+/// the project norm.
+///
+/// @group Icons
+/// @type Number
+$navIconStrokeWidth-onCover: 0 !default;
+
+
+/// Defines the hover state fill opacity of the fixed icons that appear within projects
+/// when the icons appear superimposed on certain title designs, namely
+/// those with background images, videos, or colors that depart from 
+/// the project norm.
+///
+/// @group Icons
+/// @type Number
+$navIconFillOpacity-onCover-Hover: 0.95 !default;
+
+
+// 
+//	NAVIGATION STYLES: LEFT-DRAWER NAVIGATION
+//	=========================================
+//
+
+/// Defines width of left drawer TOC
+///
+/// @group Navigation: Left Drawer TOC
+/// @type Length
+$navWidth: 17.5rem !default;
+
+
+/// Defines width of left drawer TOC at the small breakpoint
+///
+/// @group Navigation: Left Drawer TOC
+/// @type Length
+$navWidth-smallBreakpoint: 15rem !default;
+
+
+/// Defines the background color of the left drawer TOC. 
+/// By default, it uses the alternate background color.
+///
+/// @group Navigation: Left Drawer TOC
+/// @type Color
+$drawerNavColor: $alternateBackgroundColor !default;
+
+
+/// Defines the top padding of the left drawer TOC. 
+///
+/// @group Navigation: Left Drawer TOC
+/// @type Length
+$leftNavPaddingTop: 2rem !default;
+
+
+/// Defines the bottom padding of the left drawer TOC. 
+///
+/// @group Navigation: Left Drawer TOC
+/// @type Length
+$leftNavPaddingBottom: 0rem !default;
+
+
+/// Defines the left padding of the left drawer TOC. 
+///
+/// @group Navigation: Left Drawer TOC
+/// @type Length
+$leftNavPaddingLeft: 2rem !default;
+
+
+/// Defines the right padding of the left drawer TOC. 
+///
+/// @group Navigation: Left Drawer TOC
+/// @type Length
+$leftNavPaddingRight: 2rem !default;
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for project title text that appears within the left drawer 
+/// table of contents navigation style.
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `left-nav-story-title-theme` mixin in their theme files.
+/// @group Navigation: Left Drawer TOC
+@mixin left-nav-story-title {
+    @if mixin-exists(left-nav-story-title-theme) {
+    	@include left-nav-story-title-theme;
+    } @else {
+		font-size: 1.65rem;
+		line-height: 1.1;
+		font-weight: 600;
+		padding-left: $leftNavPaddingLeft;
+		padding-right: $leftNavPaddingRight;
+		margin-bottom: 1rem;
+		color: $alternateTextColor;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for each section link that appears within the left drawer TOC.
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `section-listing-theme` mixin in their theme files.
+/// @group Navigation: Left Drawer TOC
+@mixin section-listing {
+    @if mixin-exists(section-listing-theme) {
+    	@include section-listing-theme;
+    } @else {	
+		display: block;
+		padding: 1rem $leftNavPaddingRight 1rem $leftNavPaddingLeft;
+		font-size: 1.2em;
+		line-height: 1.2;
+	}
+}
+
+
+// 
+//	NAVIGATION STYLES: TOP NAVIGATION BAR
+//	=====================================
+//
+
+/// Defines the background color of the top navigation bar TOC. 
+/// By default, it uses the alternate background color.
+///
+/// @group Navigation: Top Navigation Bar TOC
+/// @type Color
+$topNavBackgroundColor: $alternateBackgroundColor !default;
+
+
+/// Defines the icon color of the top navigation bar TOC icons. 
+/// By default, it uses the alternate icon color.
+///
+/// @group Navigation: Top Navigation Bar TOC
+/// @type Color
+$topNavIconColor: $alternateIconColor !default;
+
+
+/// Defines the icon color of the top navigation bar TOC icons
+/// when the nav bar background color is absent, as happens on certain title designs
+///
+/// By default, the alternate icon color is used
+/// @group Navigation: Top Navigation Bar TOC
+/// @type Color
+$topNavIconColor-onCover: $alternateIconColor !default;
+
+
+/// Defines the color of the top navigation bar TOC container,
+/// where a project’s sections are listed
+///
+/// If none is specified, one is generated automatically based on the alternate background color.
+/// @group Navigation: Top Navigation Bar TOC
+/// @type Color
+/// @see $alternateBackgroundColor
+$topNavContainerBackgroundColor: rgba($alternateBackgroundColor,0.9) !default;
+
+
+/// Defines the color of links to sections, which appear in the top navigation bar TOC.
+///
+/// If none is specified, one is generated automatically based on the alternate text color.
+/// @group Navigation: Top Navigation Bar TOC
+/// @type Color
+/// @see $alternateTextColor
+$topNavContainerLinkColor: rgba($alternateTextColor,0.75) !default;
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for the project title that appears in the top navigation bar TOC.
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `top-nav-story-title-theme` mixin in their theme files.
+/// @group Navigation: Top Navigation Bar TOC
+@mixin top-nav-story-title {
+    @if mixin-exists(top-nav-story-title-theme) {
+    	@include top-nav-story-title-theme;
+    } @else {
+		font-size: 1.5em;
+		line-height: 1;
+		font-weight: 400;
+		top: 0.1em;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for the project title that appears in the top navigation bar TOC.
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `top-nav-story-title-theme` mixin in their theme files.
+/// @group Navigation: Top Navigation Bar TOC
+@mixin top-nav-section-links {
+    @if mixin-exists(top-nav-section-links-theme) {
+    	@include top-nav-section-links-theme;
+    } @else {	
+		padding: 0.5em 0;
+		font-size: 2em;
+		font-weight: 400;
+	}	
+}	
+
+
+// 
+//	SPACING
+//	=======
+//
+
+/// Defines the width of a project’s primary text column. 
+/// @group Spacing and alignment
+/// @type Length
+$textColumnWidth: 42rem !default;
+
+
+/// Defines the primary text column’s outside padding. 
+/// @group Spacing and alignment
+/// @type Length
+/// @ignore
+$outsidePaddingWidth: 0em !default;
+
+
+/// Defines the width of the left and right “gutters,” used to protect icons positioned there. 
+/// @group Spacing and alignment
+/// @type Length
+/// @see $outsideGutterWidth-compressed
+$outsideGutterWidth: 4rem !default;
+
+
+/// Defines the width of the left and right “gutters,” used to protect icons positioned there, at small breakpoints. 
+/// @group Spacing and alignment
+/// @type Length
+/// @see $outsideGutterWidth
+$outsideGutterWidth-compressed: 1rem !default;
+
+
+/// Defines the alignment of the text column. Accepted values are “left,” “right,” and “center.”
+/// @group Spacing and alignment
+/// @type String
+$columnOfTextAlignment: center !default;
+
+
+/// Defines the outside margin of the text column when left- and right-aligned.
+/// @group Spacing and alignment
+/// @type Length
+$columnOfTextMarginSize: 0rem !default; // not applicable to centered text columns, but requires some value
+
+
+/// Defines the combined values of the left and right gutters.
+/// @group Spacing and alignment
+/// @type Length
+/// @ignore
+$totalOutsideGutterWidth: $outsideGutterWidth * 2 !default;
+
+
+/// Defines the combined values of the left and right gutters at small breakpoints.
+/// @group Spacing and alignment
+/// @type Length
+/// @ignore
+$totalOutsideGutterWidth-compressed: $outsideGutterWidth-compressed * 2 !default;
+
+
+/// Defines the width of centered blocks.
+/// @group Spacing and alignment
+/// @type Length
+$centeredBlockWidth: 50rem !default;
+
+
+/// Defines the width of the wrapper for left- and right-aligned blocks. This controls
+/// how far a block can “float away” from the text column before reaching an impassable boundary.
+/// @group Spacing and alignment
+/// @type Length
+$alignedBlockWrapperWidth: 80rem !default;
+
+
+/// Defines the default width of left- and right-aligned blocks.
+/// @group Spacing and alignment
+/// @type Length
+$alignedBlockWidth: 30rem !default;
+
+
+/// Defines the max width of left- and right-aligned blocks.
+/// @group Spacing and alignment
+/// @type Length
+$alignedBlockMaxWidth: 40% !default;
+
+
+/// Defines the left and right margins of left- and right-aligned blocks.
+/// @group Spacing and alignment
+/// @type Length
+$alignedBlockLeftRightMargin: 2rem !default;
+
+
+/// When the text column is left- or right-aligned, 
+/// this defines the width of left- and right-aligned blocks, expressed as a number between
+/// 0 and 1 representing a fraction of the text column’s width.
+/// @group Spacing and alignment
+/// @type Number
+$alignedBlockPercOfTextColumn: 0.5 !default;
+
+
+// 
+//	TRANSITIONS AND ANIMATION
+//	=========================
+//
+
+/// Defines the default duration of CSS transitions.
+/// @group Transitions and animations
+/// @type Duration
+$defaultTransitionDuration: 250ms !default;
+
+
+/// Defines the duration of the page-to-page transitions for paginated projects.
+/// @group Transitions and animations
+/// @type Duration
+$paginationDuration: 750ms !default;
+
+
+// 
+//	MEDIA QUERIES AND BREAKPOINTS
+//	=============================
+//
+
+/// Defines the smallest breakpoint value.
+/// @group Media queries and breakpoints
+/// @type Length
+/// @see $smallBreakpoint
+$verySmallBreakpoint: 450px !default;
+
+
+/// Defines the second smallest breakpoint value.
+/// @group Media queries and breakpoints
+/// @type Length
+/// @see $verySmallBreakpoint
+$smallBreakpoint: 567px !default;
+
+
+/// Defines the largest breakpoint value.
+/// @group Media queries and breakpoints
+/// @type Length
+$mediumBreakpoint: 700px !default;
+
+
+/// Defines a breakpoint based on the width of the text column and surrounding gutters.
+/// @group Media queries and breakpoints
+/// @type Length
+/// @access private
+$textColumnBreakpoint: $textColumnWidth + (2 * $outsideGutterWidth) !default;
+
+
+// 
+//	SECTIONS
+//	========
+//
+
+/// Defines the top padding of sections.
+/// @group Sections
+/// @type Length
+/// @see $sectionTopPadding-smallBreakpoint
+$sectionTopPadding: 5rem !default;
+
+
+/// Defines the top padding of sections at the small breakpoint.
+/// @group Sections
+/// @type Length
+/// @see $sectionTopPadding
+$sectionTopPadding-smallBreakpoint: 2rem !default;
+
+
+/// Defines the bottom padding of sections.
+/// @group Sections
+/// @type Length
+/// @see $sectionBottomPadding-smallBreakpoint
+$sectionBottomPadding: 5rem !default;
+
+
+/// Defines the bottom padding of sections at the small breakpoint.
+/// @group Sections
+/// @type Length
+/// @see $sectionBottomPadding
+$sectionBottomPadding-smallBreakpoint: 2rem !default;		
+
+
+// 
+//	TYPOGRAPHY
+//	==========
+//
+
+/// Defines the `-webkit-font-smoothing` property set on a project’s `html` element
+///
+/// If not specified, it’s determined automatically based on the project’s color values. 
+/// @group Typography
+/// @type String
+$fontSmoothing: if($_bg-is-dark, antialiased, auto) !default;
+
+
+/// Defines a project’s primary font family. By default, the primary font family
+/// is used for titles, headings, captions, and navigational UI.
+///
+/// @group Typography
+/// @type List
+$primaryFontFamily: 'yoga-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+
+
+/// Defines a project’s secondary font family. By default, the secondary font family
+/// is used for body text. 
+///
+/// @group Typography
+/// @type List
+$secondaryFontFamily: 'yoga-serif', Georgia, serif !default;
+
+
+/// Defines a project’s default font family.
+///
+/// @group Typography
+/// @type List
+$defaultFontFamily: $primaryFontFamily !default;
+
+
+/// Defines the font family used for headings.
+///
+/// @group Typography
+/// @type List
+$headingFontFamily: $primaryFontFamily !default;
+
+
+/// Defines the font family used for captions.
+///
+/// @group Typography
+/// @type List
+$captionFontFamily: $primaryFontFamily !default;
+
+
+/// Defines the font family used for body text.
+///
+/// @group Typography
+/// @type List
+$bodyTextFontFamily: $secondaryFontFamily !default;
+
+
+/// Defines the font family used for blockquotes.
+///
+/// @group Typography
+/// @type List
+$blockquoteFontFamily: $secondaryFontFamily !default;
+
+
+/// Defines the default paragraph font size, based on an em value of 16px.
+///
+/// @group Typography
+/// @type Length
+$paragraphFontSize: 1.25em !default;
+
+
+/// Defines the default paragraph line height.
+///
+/// @group Typography
+/// @type Number
+$paragraphLineHeight: 1.5 !default;
+
+
+/// Defines the default paragraph font weight.
+///
+/// @group Typography
+/// @type Number
+$paragraphFontWeight: 300 !default;
+
+
+/// EXPERIMENTAL — The definition and use of this multiplier is subject to change
+///
+/// Represents the relationship in size between the primary and secondary font families.
+/// This value is used throughout the theming system to determine correct font sizes. 
+///
+/// @group Typography
+/// @type Number
+$fontFamilyMultiplier: 1 !default; // used to make fonts used for headings and captions visually similar in size (to account for discrepancies in x-height between, say, a serif and sans-serif font.)
+
+
+/// Defines the top margin of bulleted and numbered lists. 
+///
+/// @group Typography
+/// @type Length
+$listMarginTop: 1em !default;
+
+
+/// Defines the bottom margin of bulleted and numbered lists. 
+///
+/// @group Typography
+/// @type Length
+$listMarginBottom: $listMarginTop !default;
+
+
+/// Defines the value of `text-indent` when projects use indented paragraphs. 
+///
+/// @group Typography
+/// @type Length
+$textIndent: 1.5em !default;
+
+
+/// Defines the width of the left indentation of bulleted and ordered lists. 
+///
+/// @group Typography
+/// @type Length
+$listIndent: $textIndent !default;
+
+
+/// Defines the list style used for bulleted lists. 
+///
+/// @group Typography
+/// @type String
+$listStyleType: disc !default;
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines base styles for headings used throughout a project
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `header-base-styles-theme` mixin in their theme files.
+/// @group Typography
+@mixin header-base-styles {
+    @if mixin-exists(header-base-styles-theme) {
+    	@include header-base-styles-theme;
+    } @else {
+		margin-top: 2em;
+		margin-bottom: 0.5em;
+		padding: 0 $outsidePaddingWidth;
+		line-height: 1.2;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}	
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for `h1` headings used as part of certain title designs
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `atavist-cover-h1-theme` mixin in their theme files.
+/// @group Typography
+@mixin atavist-cover-h1 {
+    @if mixin-exists(atavist-cover-h1-theme) {
+    	@include atavist-cover-h1-theme;
+    } @else {
+		font-size: (8/3) * $fontFamilyMultiplier * $paragraphFontSize;
+		@include mq($smallBreakpoint) {
+			font-size: 2 * $fontFamilyMultiplier * $paragraphFontSize;
+		}
+		.section-cover & {
+			font-size: 2 * $fontFamilyMultiplier * $paragraphFontSize;
+			@include mq($smallBreakpoint) {
+				font-size: 1.5 * $fontFamilyMultiplier * $paragraphFontSize;
+			}
+		}
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for `h2` headings used as part of certain title designs
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `atavist-cover-h2-theme` mixin in their theme files.
+/// @group Typography
+@mixin atavist-cover-h2 {
+    @if mixin-exists(atavist-cover-h2-theme) {
+    	@include atavist-cover-h2-theme;
+    } @else {
+		font-size: (3/2) * $fontFamilyMultiplier * $paragraphFontSize;
+		@include mq($smallBreakpoint) {
+			font-size: (5/4) * $fontFamilyMultiplier * $paragraphFontSize;
+		}	
+		.section-cover & {
+			font-size: (5/4) * $fontFamilyMultiplier * $paragraphFontSize;
+			@include mq($smallBreakpoint) {
+				font-size: $fontFamilyMultiplier * $paragraphFontSize;
+			}	
+		}
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for bylines used as part of certain title designs
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `atavist-cover-byline-theme` mixin in their theme files.
+/// @group Typography
+@mixin atavist-cover-byline {
+    @if mixin-exists(atavist-cover-byline-theme) {
+    	@include atavist-cover-byline-theme;
+    } @else {
+		font-size: $fontFamilyMultiplier * $paragraphFontSize
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for `h1` headings used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `h1-theme` mixin in their theme files.
+/// @group Typography
+@mixin h1 {
+    @if mixin-exists(h1-theme) {
+    	@include h1-theme;
+    } @else {
+		font-size: (3/2) * $fontFamilyMultiplier * $paragraphFontSize;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for `h2` headings used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `h2-theme` mixin in their theme files.
+/// @group Typography
+@mixin h2 {
+    @if mixin-exists(h2-theme) {
+    	@include h2-theme;
+    } @else {
+		font-size: (7/6) * $fontFamilyMultiplier * $paragraphFontSize;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for `h3` headings used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `h3-theme` mixin in their theme files.
+/// @group Typography
+@mixin h3 {
+    @if mixin-exists(h3-theme) {
+    	@include h3-theme;
+    } @else {
+		font-size: $fontFamilyMultiplier * $paragraphFontSize;	
+		margin-top: 2em;
+		color: mix($primaryTextColor, $primaryBackgroundColor, 65%);
+		font-weight: 300;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for `h4` headings used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `h4-theme` mixin in their theme files.
+/// @group Typography
+@mixin h4 {
+    @if mixin-exists(h4-theme) {
+    	@include h4-theme;
+    } @else {
+		font-size: $fontFamilyMultiplier * $paragraphFontSize;
+		font-weight: 300;
+		text-transform: uppercase;
+		letter-spacing: 0.02em;
+		line-height: 1.25;
+		margin-top: 2.5em;
+		margin-bottom: 0.75em;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for `h5` headings used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `h5-theme` mixin in their theme files.
+/// @group Typography
+@mixin h5 {
+    @if mixin-exists(h5-theme) {
+    	@include h5-theme;
+    } @else {
+		@include h4;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for `h6` headings used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `h6-theme` mixin in their theme files.
+/// @group Typography
+@mixin h6 {
+    @if mixin-exists(h6-theme) {
+    	@include h6-theme;
+    } @else {
+		@include h4;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for blockquotes used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `blockquote-theme` mixin in their theme files.
+/// @group Typography
+@mixin blockquote {
+    @if mixin-exists(blockquote-theme) {
+    	@include blockquote-theme;
+    } @else {
+		margin-top: 2em;
+		margin-bottom: 2em;
+		font-style: italic;
+		@include calc(padding-left, '#{$outsidePaddingWidth} + #{$textIndent}');
+		padding-right: $outsidePaddingWidth;
+		border-left: 1px solid rgba($primaryTextColor, 0.25);
+		clear: left;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for horizontal rules used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `hr-theme` mixin in their theme files.
+/// @group Typography
+@mixin hr {
+    @if mixin-exists(hr-theme) {
+    	@include hr-theme;
+    } @else {
+		width: 10rem;
+		margin: 3em auto;
+		opacity: 0.5;
+	}
+}
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for drop caps.
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `drop-cap-theme` mixin in their theme files.
+/// @group Typography
+@mixin drop-cap {
+    @if mixin-exists(drop-cap-theme) {
+    	@include drop-cap-theme;
+    } @else {
+		float: left;
+		font-size: 5.6em;
+		padding-top: 0.105em;
+		padding-right: 0.05em;
+		margin-bottom: -0.01em;
+		line-height: 0.7;
+		padding-bottom: 0;
+		font-style: normal;
+	}	
+}
+
+
+// 
+//	LINK STYLES
+//	===========
+//
+
+
+/// Defines the color of link text.
+/// @group Typography
+$linkTextColor: inherit !default;
+
+
+/// Defines the color of link text in h2 elements.
+/// @group Typography
+$linkTextColor-h2: inherit !default;
+
+
+/// Defines the color of link text in h3 elements.
+/// @group Typography
+$linkTextColor-h3: inherit !default;
+
+
+/// Defines the color of link text in captions.
+/// @group Typography
+$linkTextColor-captions: inherit !default;
+
+
+/// Defines the color of link underlines.
+/// @group Typography
+$linkUnderlineColor: mix($primaryBackgroundColor, $primaryTextColor, 50%) !default;
+
+
+/// Defines the color of link underlines in h2 elements.
+/// @group Typography
+$linkUnderlineColor-h2: currentColor !default;
+
+
+/// Defines the color of link underlines in h3 elements.
+/// @group Typography
+$linkUnderlineColor-h3: currentColor !default;
+
+
+/// Defines the color of link underlines in captions.
+/// @group Typography
+$linkUnderlineColor-captions: currentColor !default;
+
+/// Defines the Y value of the `background-position` property of link underlines.
+/// @group Typography
+$linkBackgroundPositionY: 90% !default;
+
+
+/// Defines the Y value of the `background-position` property of link underlines in h2 elements.
+/// @group Typography
+$linkBackgroundPositionY-h2: 92% !default;
+
+
+/// Defines the Y value of the `background-position` property of link underlines in h3 elements.
+/// @group Typography
+$linkBackgroundPositionY-h3: 89% !default;
+
+
+/// Defines the Y value of the `background-size` property of link underlines.
+/// @group Typography
+$linkBackgroundSizeY: 2px !default;
+
+
+/// Defines the Y value of the `background-size` property of link underlines in h2 elements.
+/// @group Typography
+$linkBackgroundSizeY-h2: 4px !default;
+
+
+/// Defines the Y value of the `background-size` property of link underlines in h3 elements.
+/// @group Typography
+$linkBackgroundSizeY-h3: 3px !default;
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for link styles used within section content
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `link-styles-theme` mixin in their theme files.
+/// @group Typography
+@mixin link-styles {
+@if mixin-exists(link-styles-theme) {
+	@include link-styles-theme;
+} @else {
+	text-decoration: none;
+	color: $linkTextColor;
+	background-image: linear-gradient(transparent 50%, $linkUnderlineColor 50%);
+	background-position: 0px $linkBackgroundPositionY;
+	background-repeat: repeat-x;
+	background-size: 1px $linkBackgroundSizeY;
+	text-shadow: $primaryBackgroundColor 1px 0px 0px, $primaryBackgroundColor 2px 0px 0px, $primaryBackgroundColor -1px 0px 0px, $primaryBackgroundColor -2px 0px 0px;
+
+	h2 & {
+		color: $linkTextColor-h2;
+		background-image: linear-gradient(transparent 50%, $linkUnderlineColor-h2 50%);
+		}
+
+	h3 & {
+		color: $linkTextColor-h3;
+		background-image: linear-gradient(transparent 50%, $linkUnderlineColor-h3 50%);
+		}
+
+	.atavist-caption & {
+		color: $linkTextColor-captions;
+		background-image: linear-gradient(transparent 50%, $linkUnderlineColor-captions 50%);
+		}				
+
+	h2 & {
+		background-position: 0px $linkBackgroundPositionY-h2;
+		background-size: 1px $linkBackgroundSizeY-h2;
+		}
+
+	h3 & {
+		background-position: 0px $linkBackgroundPositionY-h3;
+		background-size: 1px $linkBackgroundSizeY-h3;
+		}
+
+	}
+}
+
+
+// 
+//	BLOCK STYLES
+//	============
+//
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for captions
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `atavist-caption-theme` mixin in their theme files.
+/// @group Blocks
+@mixin atavist-caption {
+    @if mixin-exists(atavist-caption-theme) {
+    	@include atavist-caption-theme;
+    } @else {
+		font-family: $primaryFontFamily;
+	}	
+}	
+
+// 
+//	Sidebar blocks
+//	==============
+//
+
+/// Defines general font size for Sidebar blocks.
+///
+/// @group Blocks
+$sidebarBlockFontSize: 0.85em !default;
+
+/// Defines line height for Sidebar blocks.
+///
+/// @group Blocks
+$sidebarBlockLineHeight: 1.3 !default;
+
+/// Defines the body text font family for Sidebar blocks.
+///
+/// @group Blocks
+$sidebarBlockBodyTextFontFamily: $primaryFontFamily !default;
+
+
+/// Defines the body text font size for Sidebar blocks.
+///
+/// @group Blocks
+$sidebarBlockBodyTextFontSize: $fontFamilyMultiplier * $paragraphFontSize !default;
+
+/// Defines the paragraph top margin for Sidebar blocks, used when a project theme
+/// uses spaces between pargraphs (rather than indented paragraphs).
+///
+/// @group Blocks
+$sidebarBlockParagraphTopMargin: 1em !default;
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for Sidebar blocks
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `atavist-sidebar-theme` mixin in their theme files.
+/// @group Blocks
+@mixin atavist-sidebar {
+    @if mixin-exists(atavist-sidebar-theme) {
+    	@include atavist-sidebar-theme;
+    } @else {
+		.atavist-sidebar {
+			font-size: $sidebarBlockFontSize;
+			line-height: $sidebarBlockLineHeight;
+			p, pre, article & ul, article & ol, blockquote {
+				font-family: $sidebarBlockBodyTextFontFamily;
+				font-size: $sidebarBlockBodyTextFontSize;				
+			}
+			.template-setting-paragraph-spacing-Spaces & p:not(.atavist-caption), .template-setting-paragraph-spacing-Spaces & pre {
+				margin-top: $sidebarBlockParagraphTopMargin;
+			}			
+		}
+	}
+}
+
+
+// 
+//	Pop-up blocks
+//	==============
+//
+
+
+/// Defines the text color of pop-up block inline links.
+///
+/// @group Blocks
+$popUpBlockTextColor: inherit !default;
+
+
+/// Defines the padding of pop-up block inline links.
+///
+/// @group Blocks
+$popUpBlockPadding: 3px 4px 1px !default;
+
+
+/// Defines the background color of pop-up block inline links.
+///
+/// @group Blocks
+$popUpBlockBackgroundColor: rgba(mix($primaryTextColor, $primaryBackgroundColor, 70%),0.175) !default;
+
+
+/// Defines the hover state background color of pop-up block inline links.
+///
+/// @group Blocks
+$popUpBlockBackgroundColor-hover: rgba(mix($primaryTextColor, $primaryBackgroundColor, 70%),0.25) !default;
+
+
+/// Defines the border radius of pop-up block inline links.
+///
+/// @group Blocks
+$popUpBlockBorderRadius: 2px !default;
+
+
+/// EXPERIMENTAL — This approach to mixins is subject to change
+///
+/// Defines styles for text associated with a Pop-Up Block
+///
+/// If theme creators wish to overwrite this mixin, they should include 
+/// a `inline-block-styles-theme` mixin in their theme files.
+/// @group Blocks
+@mixin inline-block-styles {
+    @if mixin-exists(inline-block-styles-theme) {
+    	@include inline-block-styles-theme;
+    } @else {	
+		text-decoration: none;
+		color: $popUpBlockTextColor;
+		padding: $popUpBlockPadding;
+		border-radius: $popUpBlockBorderRadius;
+		border-bottom: none;
+		background-color: $popUpBlockBackgroundColor;
+
+		.no-touch &:hover {
+			background-color: $popUpBlockBackgroundColor-hover;
+		}
+	}
+}
+
+
+// @mixin theme-junk-drawer {
+// 	// Nothing here in the default!
+// }

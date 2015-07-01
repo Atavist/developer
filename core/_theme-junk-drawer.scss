@@ -1,0 +1,3 @@
+@if mixin-exists(theme-junk-drawer) {
+	@include theme-junk-drawer;
+}

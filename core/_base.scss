@@ -1,0 +1,31 @@
+html, body {
+	margin: 0;
+	}
+
+body { /* Set the default color for headlines, body text, captions, and extra text */
+	color: $primaryTextColor;
+	}
+
+article, body {
+	background-color: $primaryBackgroundColor;
+	}	
+
+
+/* CLEARFIX */
+
+article, section, .cf {
+	&:before, &:after { 
+		content: " ";
+		display: table;
+		}
+
+	&:after {
+		clear: both;
+		}
+	}
+
+/* Safari 7 template element fix */
+
+template {
+	display:none;
+}

@@ -1,0 +1,134 @@
+/* 
+
+UNIVERSAL PRINT STYLES 
+==================================================	*/
+
+@media print {
+
+	/* set default printed page settings */
+	@page {
+		size: auto;
+		/* this affects the margin in the printer settings */ 
+    	margin: 25mm 25mm 25mm 25mm;
+    	mso-header-margin:25mm; 
+		mso-footer-margin:25mm; 
+		mso-paper-source:0;
+		marks: none;
+		}
+
+	* {
+		@include transition-duration(0 !important);
+		}
+
+	html {
+		font-size: 12px;
+	}
+
+	body {
+		margin: 0px;
+		}
+
+	p, pre {
+		margin: 0; /* margin: 0 auto; sucks in print; */
+		}
+
+
+	/* remove all background colors */
+	body, .chapter-pagination-wrapper, section.chapter {
+		background-color: transparent;
+		}
+
+	/* for now, hide cover */
+	.story-cover {
+		display: none;
+		}
+
+	h1, h2, h3, h4, h5, h6, p, pre, article ul, article ol {
+		width: auto;
+		max-width: none;
+		}
+
+	.story-wrapper {
+		position: relative;
+		width: auto;
+		height: auto;
+		}
+
+	/* hide navigational elements */
+	.nav-menu-button,.nav-icons, .story-wrapper nav {
+		display: none;
+		}
+
+	/* reset .in-view so pages are not cropped */
+	.in-view,.chapter-pagination-wrapper {
+		width: auto;
+		height: auto;
+		overflow: visible;
+		display: block;
+		}
+
+	.article-wrapper {
+		overflow: visible;
+		width: auto;
+		}
+
+	.extra {
+		display: none;
+		}
+
+	.chapter-type-video, .chapter-type-pdf {
+		display: none;
+		}
+
+	.chapter-type-image img {
+		max-height: 90%;
+		}
+
+	.chapter, .caption, .image-chapter-wrapper {
+		margin: 0 !important;
+		padding: 0 !important;
+		}
+
+	.caption p {
+		text-indent: 0 !important;
+		}
+
+	/* resetting for pagination view */
+	.article-pagination-wrapper,.chapter-pagination-wrapper {
+		position: relative;
+		@include transform(none !important);
+	}
+
+	.chapter-type-1:before, .chapter-type-10:before {
+		position: relative;
+		height: 0;
+		}
+
+	.chapter-type-1 .image-chapter-wrapper.title-suppressed, .chapter-type-10 .video-chapter-wrapper.title-suppressed {
+		max-width: none;
+		}
+	
+	/*  force new chapters to a new page */
+	section.chapter {
+		page-break-after: always;
+		}
+
+	figure,img {
+		margin: 0; /* force to zero, otherwise math is hard */
+		width: 100%;
+		}
+
+	a {
+		word-wrap: break-word;
+		}
+
+	/*  append link url after all anchor tags */
+	a:after {
+		/*content: " [" attr(href) "] ";*/
+		}
+
+	/*  hide internal links */
+	a[href^="#"]:after {
+		display: none;
+		}
+}

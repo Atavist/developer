@@ -1,0 +1,16 @@
+			
+.template-setting-drop-caps-Drop {
+
+	.chapter .chapter-title:first-child + p:first-of-type:first-letter, 
+	.chapter .chapter-title:first-child + .extra + p:first-of-type:first-letter, 
+	.chapter .chapter-title:first-child + .chapter-image + p:first-letter, 
+	.chapter .chapter-title:first-child + .chapter-image + .extra + p:first-letter, 
+	.chapter .chapter-title:first-child + blockquote + p:first-letter,
+	.chapter .chapter-title:first-child + blockquote + p:first-letter,
+	.chapter > p:first-of-type:not(.atavist-caption):not(.atavist-block):first-letter {
+		@include drop-cap;
+		}
+
+}
+
+

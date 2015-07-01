@@ -1,0 +1,84 @@
+@import "typefaces";
+@import "base-typographic-styles";
+@import "inline-styles-fixes";
+@import "headings-typography";
+
+
+html {
+	font-size: 16px;
+	text-rendering: optimizeLegibility; /* for kerning, ligatures, and other font features */	
+	-webkit-text-size-adjust: 100%; /* prevents unintended font resizing in mobile Safari */
+	-webkit-font-smoothing: $fontSmoothing;
+	word-wrap: break-word;	 
+ 	@media screen and (max-width: $smallBreakpoint) {
+		font-size: 14.5px;
+		}
+	}
+
+/* 
+
+Adjust typographic settings
+--------------------------------------------------	*/
+
+p, pre, article ul, article ol, blockquote {
+	font-size: $paragraphFontSize;
+	line-height: $paragraphLineHeight;
+	font-weight: $paragraphFontWeight;
+	white-space: normal; // can't remember why this is in here; what function it serves
+	}
+
+p, pre {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0 $outsidePaddingWidth;
+	text-indent: $textIndent;
+	}
+
+article ol, article ul {
+	margin-top: $listMarginTop;
+	margin-bottom: $listMarginBottom;
+	@include calc(padding-left, '#{$outsidePaddingWidth} + #{$listIndent}');
+	padding-right: $outsidePaddingWidth;
+	@include box-sizing(border-box);
+	}	
+
+article ul {
+	list-style-type: $listStyleType;
+}	
+
+h1, h2, h3, h4, h5, h6 {
+	& + p, & + .pop-up-extra + p {
+		text-indent: 0;
+		}
+	}
+
+p:first-of-type {
+	text-indent: 0;
+	}
+
+blockquote {
+	@include blockquote;
+	}	
+
+blockquote {
+	p, ol, ul {
+		font-size: inherit;
+		width: 100%;
+		max-width: 100%;		
+		padding: 0;
+		margin: 0;
+		}
+	}
+
+hr {
+	@include hr;
+	}	
+	
+.caption {
+	line-height: $paragraphLineHeight;
+	}
+
+.caption-title {
+	font-weight: 600;
+	}
+	

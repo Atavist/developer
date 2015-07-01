@@ -1,0 +1,277 @@
+// FISHER THEME
+// By Amelia Kaufman
+
+
+// Colors
+
+$primaryBackgroundColor: #FAF9F7;
+$primaryTextColor: #292B2B;
+
+$alternateBackgroundColor: rgb(241, 240, 238);
+$alternateTextColor: #6E6D64;
+
+$navLinkColor-hover: rgba($alternateTextColor, 1);
+$navLinkColor-currentSection: rgba($alternateTextColor, 1);
+
+
+@mixin left-nav-story-title-theme {
+	font-size: 1.65rem;
+	line-height: 1.1;
+	font-weight: 600;
+	padding-left: $leftNavPaddingLeft;
+	padding-right: $leftNavPaddingRight;
+	margin-bottom: 1rem;
+	color: $alternateTextColor;
+	font-family: $primaryFontFamily;
+}
+
+@mixin section-listing-theme {
+	display: block;
+	padding: 1rem $leftNavPaddingRight 1rem $leftNavPaddingLeft;
+	font-size: 1.2em;
+	line-height: 1.2;
+}
+
+
+// Top navigation
+
+$topNavIconColor: $alternateTextColor;
+
+$topNavContainerBackgroundColor: rgba(238, 237, 235, 0.975); 
+
+@mixin top-nav-story-title-theme {
+    font-size: 1.5em;
+	height: 1.3em;        
+    line-height: 1;
+    font-weight: 400;
+    top: 0.1em;
+}
+
+@mixin top-nav-section-links-theme {
+	padding: 0.5em 0;
+	font-weight: 400;
+	font-size: 1.25em !important;
+}    
+
+// Spacing
+
+$textColumnWidth: 38rem;
+$centeredBlockWidth: $textColumnWidth;
+
+
+// // Typography
+
+$fontSmoothing: antialiased;
+
+$primaryFontFamily: "ltc-bodoni-175", Georgia, serif;
+$secondaryFontFamily: "abril-text", Georgia, serif;
+
+$defaultFontFamily: $secondaryFontFamily;
+
+$paragraphFontSize: 1.15em;
+$paragraphLineHeight: 1.56;
+$paragraphFontWeight: 100;
+
+@mixin atavist-cover-h1-theme {	
+	font-size: (11.8/3) * $fontFamilyMultiplier * $paragraphFontSize;
+	font-weight: 400 !important;
+	font-style: italic;
+	.section-cover & {
+		font-size: 3em;
+	}
+}
+
+@mixin atavist-cover-h2-theme {
+		font-size: 2em !important;
+		opacity: 1 !important;
+}
+
+@mixin h1-theme {
+	font-size: (3/2) * $fontFamilyMultiplier * $paragraphFontSize;
+	//font-weight: 400 ;
+	font-style: italic;
+}
+
+@mixin h2-theme {
+	font-size: (10/6) * $fontFamilyMultiplier * $paragraphFontSize;
+	font-weight: 600;
+	color: $primaryTextColor;
+	padding-bottom: 0.25rem;
+}
+
+@mixin h3-theme {
+	font-size: (8.5/6) *  $fontFamilyMultiplier * $paragraphFontSize;	
+	margin-top: 2em;
+	color: #515353;
+		font-weight: 400;
+		position: relative;
+		padding-bottom: 0.25rem;
+}
+
+@mixin blockquote-theme {
+	margin-top: 2em;
+	margin-bottom: 2em;
+	font-style: italic;
+	@include calc(padding-left, '#{$outsidePaddingWidth} + #{$textIndent}');
+	padding-right: $outsidePaddingWidth;
+	border-left: 1px solid #787B7B;
+	position: relative;
+}
+
+
+// Link styles
+
+@mixin link-styles-theme {
+text-decoration: none;
+background-color: transparent;
+color: inherit;
+border-bottom: 1px dashed #A1A1A1; // worth pulling this out into its own variable, or no? leaning no.
+	.no-touch &:hover {
+		border-bottom: 1px dashed #292B2B;
+	}
+}
+
+$listStyleType: circle;
+
+@mixin drop-cap-theme {
+	  float: left;
+	  font-size: 5.3em;
+	  padding-top: 0.04em;
+	  padding-right: 0.09em;
+	  margin-bottom: -0.01em;
+	  line-height: 0.7;
+	  padding-bottom: 0;
+	  font-style: normal;
+
+	  @media screen and (max-width: 567px) {
+	  	padding-top: 0.07em !important;
+	  }
+
+}	
+
+	@mixin atavist-caption-theme {
+	font-family: $primaryFontFamily;
+	margin-left: auto;
+	margin-right: auto;
+	color: $alternateTextColor;
+	opacity: 1;
+	font-size: 1.1em;
+}
+
+
+// Title Design Style Overrides 
+
+	.cover-colby .cover-title {
+		font-family: $primaryFontFamily;
+		weight: 600;
+	}			
+
+	.story-cover .cover-colby .cover-title {
+		font-family:  $primaryFontFamily !important;
+		font-style: italic !important;
+	}
+
+	.story-cover .cover-text-bold .cover-title {
+		font-style: italic !important;
+	}		
+
+	.story-cover .cover-text-bold .cover-subtitle {
+		font-size: 2em !important;
+	}
+
+@mixin theme-junk-drawer {
+
+	.atavist-pullquote {
+		position: relative;
+		text-align: center;
+		margin-top: 3.5em;
+			margin-bottom: 3.7em;
+			font-size: 0.80rem;
+		.atavist-caption {
+			margin-left: auto;
+			margin-right: auto;
+			width: 80%;
+			color: $primaryTextColor;
+			opacity: 1;
+			padding-top: 1.45rem;
+			}
+		&:before {
+			content: "";
+			width: 50%;
+			left: 25%;
+			border-top: 1px solid #787B7B;
+			position: absolute;
+			}	
+		&:after {
+			content: "";
+			width: 50%;
+			left: 25%;
+			border-top: 1px solid #787B7B;
+			position: absolute;
+			}			
+	}
+	
+	blockquote:before {
+	  width: 0.25em;
+	  height: 100%;
+	  position: absolute;
+	  content: '';
+	  left: 0px;
+	  border-right: 1px dashed #787B7B;
+	}
+
+		body:not(.on-cover).template-setting-navigation-option-Top .creatavist-logo-icon svg g { 
+			fill: #1e1e1e !important;
+		}
+		body.on-cover.template-setting-navigation-option-Top .navigation-bar-on-cover-but-visible .creatavist-logo-icon svg g {
+			fill: #1e1e1e !important;
+		}  		
+
+		h3:before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			max-width: 6rem;
+			border-bottom: 1px solid #787B7B;
+			bottom: 0;
+		}
+
+		.cover-subtitle, .atavist-cover-h2 {
+			position: relative;
+		}
+
+		.cover-subtitle:before, .atavist-cover-h2:before {
+			border-bottom: none;
+		}
+
+		h1.cover-title.atavist-cover-font-serif {
+			font-family: $primaryFontFamily;
+		}
+
+		.atavist-sidebar[data-sidebar-style="solidbackground"] .atavist-sidebar-wrapper:before {
+			background-color: rgba(236, 235, 233, 1) !important;
+			opacity: 1 !important;
+		}
+
+		.template-setting-pop-up-style-Overlay .pop-up-extra {
+			  background-color: rgba(241, 240, 238, 1) !important;
+		}
+
+		.cover-text-bold .cover-title {
+			font-style: italic !important;
+		}
+
+		.cover-text-simple .cover-subtitle {
+			opacity: 1;
+			color: RGBA(105, 106, 104, 1);
+		}
+
+	/* MEDIA QUERIES */
+
+		@media only screen and (max-device-width: 480px) {
+			h2 {
+				letter-spacing: -0.09rem !important;
+			}
+
+		}
+}

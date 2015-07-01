@@ -1,0 +1,134 @@
+.arrow {
+	background-color: transparent;
+	font-size: 0.3em;
+	position: fixed;
+	border-radius: 0.125em;
+	cursor: pointer;
+	z-index: 2;
+	margin: auto;
+	bottom: 1.275rem; // hm, where does this value come from? 
+	}
+
+.arrow-shape {
+	content: "";
+	display: block;
+	width: 4em;
+	height: 4em;
+	background-color: transparent;
+	border: 0.75em solid rgba(0,0,0,0.125);
+	margin: 1.5em;
+	@include transform(rotate(45deg));  
+	}
+
+/* Spacing for generic arrow */
+.right-arrow {
+	right: 1.275rem;
+	}
+
+.left-arrow {
+	left: 1.275rem;
+	}
+
+@mixin right-arrow-shape {
+	border-left: none;
+	border-bottom: none;
+	margin-left: -1.25em;  
+	}
+
+.right-arrow .arrow-shape {
+	@include right-arrow-shape;
+	}
+
+@mixin left-arrow-shape {
+	border-right: none;
+	border-top: none;
+	margin-right: -1.25em;
+	}
+
+.left-arrow .arrow-shape {
+		@include left-arrow-shape;
+	}	
+
+.no-touch .arrow:hover > .arrow-shape {
+	cursor: pointer;
+	}	
+
+
+
+
+/* Spacing for pagination arrow */
+.previous-page-arrow, .next-page-arrow {
+	padding: 3em;
+	bottom: 0.375rem;
+	@media screen and (max-width: $smallBreakpoint) {			
+		bottom: 0.25rem;
+		}			
+	}
+
+.previous-page-arrow {
+	left: 0.375rem;
+	}
+
+.next-page-arrow {
+	right: 0.375rem;
+	}
+
+.previous-page-arrow .label, .next-page-arrow .label {
+	position: absolute;
+	font-size: 3.5em;
+	top: 1.4em;
+	width: 40vw; /* decent initial value, but these are overwritten in script.js */
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: 500;
+	@media screen and (max-width: $smallBreakpoint) {			
+		display: none;
+		opacity:0;
+		z-index: -50;
+		}
+	}	
+
+.previous-page-arrow .label, .next-page-arrow .label {
+	color: rgba(0,0,0,0.375);
+	}	
+
+.arrow.previous-page-arrow .label {
+	left: $outsideGutterWidth;
+	text-align: left;
+	}
+
+.arrow.next-page-arrow .label {
+	right: $outsideGutterWidth;
+	text-align: right;
+	}
+
+.arrow.scrolled-to-bottom .arrow-shape, .arrow.scrolled-to-bottom .label span {
+	color: rgba(0,0,0,0.375);
+	border-color: rgba(0,0,0,0.375);
+	}
+
+/* ARROW ACTIVE STATES */
+
+@mixin arrow-hover {
+	border-color: rgba(0,0,0,0.5);
+	color: rgba(0,0,0,0.5);
+	}
+
+.no-touch .arrow:hover > .arrow-shape, .arrow.keyPressed > .arrow-shape, 
+.no-touch .arrow:hover .label span, 
+.arrow.keyPressed .label {
+	@include arrow-hover;
+	}
+
+.on-cover .arrow.scrolled-to-bottom .arrow-shape, 
+.on-cover .arrow.scrolled-to-bottom .label span {
+	border-color: rgba($alternateTextColor,0.75);
+	color: rgba($alternateTextColor,0.75);
+	}	
+
+.no-touch .on-cover .arrow.scrolled-to-bottom:hover > .arrow-shape, 
+.no-touch .on-cover .arrow.scrolled-to-bottom:hover > .label span {
+	border-color: $alternateTextColor;
+	color: $alternateTextColor;
+	}

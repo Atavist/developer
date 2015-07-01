@@ -1,0 +1,8 @@
+
+.chapter-pagination-wrapper, .story-cover, .nav-menu-button, article, .nav-menu-button.nav-revealed, .no-touch .nav-story-title a:after, .left-arrow.nav-revealed, .no-touch a.creatavist-branding, .no-touch a, .arrow, .no-touch .closer, .extra-type-timeline .nav-container .icon, .arrow-shape, .extra-type-timeline .nav-container .icon:before, .template-icon path, .no-touch .arrow .label span  {
+	@include transition-duration($defaultTransitionDuration); /* Default duration for all CSS transitions */
+	}
+
+.no-transition {
+	@include transition-duration(0ms !important);
+	}

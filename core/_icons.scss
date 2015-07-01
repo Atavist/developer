@@ -1,0 +1,211 @@
+
+/* 
+	
+	Icon styles
+	--------------------------------------------------	*/
+
+	/* Colors for template icons */
+
+	.template-icon {
+		path {
+			fill: $primaryIconColor;
+			stroke: $primaryIconColor-Stroke;
+			}
+
+		.soundtrack-outer-waves path, .soundtrack-inner-waves path {
+			fill: none !important;
+			}
+
+		.soundtrack-inner-waves path {
+			stroke: $primaryIconColor;
+			}
+
+		.soundtrack-outer-waves path {
+			stroke: $alternateIconColor;
+			}	
+
+		.on-cover & path {
+			fill: $alternateIconColor;
+			}				
+		}
+
+	.nav-menu-button rect {
+		fill: none;
+		}	
+
+	.nav-menu-button { /* The action button styles are likely to change */
+		position: fixed;
+		top: 0.5rem;
+		left: 0;
+		margin-left: 0.7rem;
+		cursor: pointer;
+		z-index: 5;
+		}
+		
+	.no-touch .nav-menu-button:hover {
+		opacity: 1;
+		}
+				
+	.nav-icons {
+		position: fixed;
+		top: 1rem;
+		right: 1rem;
+		z-index: 4;
+		font-size: 1.45em;
+		width: 2rem;
+		}
+		
+	.nav-icons a {
+		margin-right: 0.75em;
+		border-bottom: none;
+		}
+
+	.nav-icons.vertical-nav-icons a {
+		width: 100%;		
+		margin-right: 0;
+		float: right;
+		clear: both;
+		margin-bottom: 0.25em;
+		text-align: center;
+		}	
+		
+	.no-touch .nav-icons a:hover {
+		opacity: $navLinkOpacity-Hover;
+		border-bottom: none;
+		}
+
+	.template-icon path {
+		stroke-width: $navIconStrokeWidth;
+		stroke-opacity: $navIconStrokeOpacity;
+		fill-opacity: $navIconFillOpacity;
+		}
+
+	.template-icon .soundtrack-outer-waves path, .template-icon .soundtrack-inner-waves path {
+		stroke-width: 1.25 !important;
+		}
+
+	.template-icon .soundtrack-inner-waves path {
+		stroke-opacity: $navIconFillOpacity;
+		}
+
+	.no-touch .template-icon:hover path, .no-touch .template-icon:hover .soundtrack-outer-waves path {
+		stroke-opacity: $navIconStrokeOpacity-Hover;			
+		fill-opacity: $navIconFillOpacity-Hover;
+		}
+
+	.no-touch .template-icon:hover .soundtrack-inner-waves path {
+		stroke-opacity: $navIconFillOpacity-Hover;
+		}
+
+	.no-touch .template-icon:hover .soundtrack-outer-waves path {
+		stroke-opacity: $navLinkOpacity-Hover;
+		}
+		
+	.on-cover .template-icon path {
+		stroke-width: $navIconStrokeWidth-onCover;
+		fill-opacity: $navIconFillOpacity-onCover;
+		}
+
+	.no-touch .on-cover .template-icon:hover path {
+		fill-opacity: $navIconFillOpacity-onCover-Hover;
+		}	
+
+	.epub-share-link-hint {
+		display: none;
+		}		
+
+	/*
+
+	Set styles for soundtrack settings
+	--------------------------------------------------	*/
+
+	.soundtrackToggle {
+		cursor: pointer;
+		}
+
+	.soundtrackToggle .fa-volume-off, .soundtrackToggle.playing .fa-volume-up {
+		display: inline;
+		}
+
+	.template-setting-navigation-option-Top .nav-icons.horizontal-nav-icons a.soundtrackToggle svg.fa-volume-off,
+	.template-setting-navigation-option-Top .nav-icons.horizontal-nav-icons a.soundtrackToggle.playing svg.fa-volume-up {
+		display: block;
+		}
+
+	.soundtrackToggle.playing .fa-volume-off, .soundtrackToggle .fa-volume-up {
+		display: none;
+		}
+
+	.template-setting-navigation-option-Top .nav-icons.horizontal-nav-icons a.soundtrackToggle.playing svg.fa-volume-off,
+	.template-setting-navigation-option-Top .nav-icons.horizontal-nav-icons a.soundtrackToggle svg.fa-volume-up {
+		display: none;
+		}		
+
+
+	/* 
+	
+	'Built with Creatavist' and Creatavist icon styles
+	--------------------------------------------------	*/
+	
+	.creatavist-logo-icon {
+		// font-size: 0.7em;
+		width: 2rem !important;
+		height: 2rem;
+		opacity: 1 !important;
+		margin-bottom: 0.75em !important;
+		}
+
+	.creatavist-logo-icon svg {
+		width: 2rem !important;
+		height: 2rem;
+	}
+
+	.creatavist-logo-icon svg g {
+		fill: $primaryIconColor;
+		.on-cover & {
+			fill: $alternateIconColor;
+		}
+	}
+
+	// .creatavist-logo-icon .logo-outer-wrapper {
+	// 	border: 0.3125em solid;
+	// 	border-right: .6em solid;
+	// 	height: 2em;
+	// 	width: 2em;
+	// 	overflow: hidden;
+	// 	@include box-sizing(border-box);
+	// 	@include transition-duration($defaultTransitionDuration);
+	// 	cursor: pointer;
+	// 	float: right;
+	// 	}
+
+	// .no-touch .creatavist-logo-icon .logo-outer-wrapper:hover {
+	// 	width: 8.7em;
+	// 	border-right: 0px solid;
+	// 	border-left: 0px solid;
+	// 	border-color: rgb(0,0,0);
+	// 	}
+
+	// .no-touch .creatavist-logo-icon .logo-outer-wrapper:hover .logo-wrapper {
+	// 	padding-left: 0;		
+	// 	}
+
+	// .creatavist-logo-icon .logo-wrapper {
+	// 	padding-left: 0.35em;
+	// 	padding-top: 0.2125em;
+	// 	box-sizing: border-box;
+	// 	-moz-box-sizing: border-box;
+	// 	}
+
+	.creatavist-logo-icon .logo-outer-wrapper .logo-wrapper svg g path {
+		stroke: rgba(245,245,245,0.85);
+		}
+
+	.no-touch .creatavist-logo-icon .logo-outer-wrapper:hover .logo-wrapper svg g path {
+		stroke: $alternateTextColor;
+		}		
+
+	.creatavist-logo-icon .logo-outer-wrapper, .logo-wrapper {
+		background-color: rgb(0,0,0);
+		border-color: rgb(0,0,0);
+		}			

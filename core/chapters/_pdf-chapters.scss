@@ -1,0 +1,16 @@
+/* PDF CHAPTERS */
+
+.chapter-type-5 {
+	.image-chapter-wrapper {		
+		@include column-of-text;
+		width: 100%;
+		margin: 0 auto;
+		}
+
+	.image-chapter-wrapper {		
+		max-width: -webkit-calc(100% - $totalOutsideGutterWidth);
+		max-width: calc(100% - $totalOutsideGutterWidth);
+		margin: 0 auto;
+		}
+
+	}

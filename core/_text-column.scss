@@ -1,0 +1,17 @@
+/* 
+
+Define the width of the column of text
+--------------------------------------------------	*/
+
+h1, h2, h3, h4, h5, h6, p, pre, article ul, article ol, blockquote {
+	@include column-of-text; // why? so that other settings, like nav styles or pagination styles, can inherit all this. 
+	}
+
+.atavist-cover {
+	h1, h2, h3, h4, h5, h6 {
+		width: 100%;
+		max-width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}

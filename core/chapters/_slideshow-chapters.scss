@@ -1,0 +1,17 @@
+	/* 
+	
+	Styles unique to slideshow chapters
+	--------------------------------------------------	*/
+
+	.chapter-type-slideshow .slideshow-chapter-outer-wrapper {
+	    position: relative;
+		}
+
+	.slideshow-image-container {
+		overflow: hidden;
+		background-color: rgba(100,100,100,0.125);
+		}
+
+	.slideshow-image-container img {
+		opacity: 0;
+		}

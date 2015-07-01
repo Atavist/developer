@@ -1,0 +1,327 @@
+
+
+.template-setting-navigation-option-Top {
+	
+	// COLUMN WIDTH
+
+	.nav-story-title, nav ol {
+		@include column-of-text; // arguably, this stuff doesn't always need to be the width of the column of text.  
+		}
+
+
+	// CORE NAV BAR DIMENSIONS, SPACING, AND TRANSITIONS
+
+	nav .navigation-bar:before,
+	.nav-story-title a:after, 
+	.navigation-container, 
+	.nav-story-title {
+		@include transition-duration($defaultTransitionDuration);
+		}
+
+	$topNavBarHeight: 3.5em;
+		
+	nav .navigation-bar {
+		position: fixed;
+		top: 0;
+		// bottom: 0;  // This seems to be unnecessary, and it makes the height property more or less meaningless.
+		width: 100%;
+		height: $topNavBarHeight; /* To make the navigation bar smaller, adjust the font-size of the navigation bar to less than 1.0em. Don't change this height. */
+		z-index: 4;
+		padding: 1em 0;
+		@include box-sizing(border-box);		
+		-webkit-font-smoothing: antialiased;
+		@include transition-duration(0ms !important);
+		font-size: 1em; /* To change the nav bar's size, adjust this. The entire navigation bar will scale with it. */
+		}	
+				
+	nav .navigation-bar:before { /* This is the navigation bar's solid background, which appears once you scroll past the cover. */
+		content: "";
+		position: absolute;
+		top: 0;			
+		width: 100%;
+		height: 100%;		
+		@include transition-delay(0ms); 			
+		}
+
+	&.on-cover nav .navigation-bar:before, 
+	&.on-cover nav .navigation-bar .nav-story-title { /* 3.5em is equal to the height of the navigation bar. A translateZ is applied to increase performance. */
+		@include transform(translateY(-$topNavBarHeight)); 
+		}	
+
+	nav .navigation-bar:before, 
+	&.on-cover nav .navigation-bar.navigation-bar-on-cover-but-visible:before, 
+	nav .navigation-bar .nav-story-title, 
+	&.on-cover nav .navigation-bar.navigation-bar-on-cover-but-visible .nav-story-title, 
+	nav .navigation-container.nav-revealed {
+		/* This is a lengthy list of selectors, but it accounts for all cases in which the navigation bar, the story title, or the drop-down navigation container should be visible. */
+		@include transform(translateY(0));
+		}
+
+	nav .navigation-container {	
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 3;
+		padding: 0;
+		@include calc(padding-top, '#{$topNavBarHeight} + 1.65em'); /* 3.5rem is equal to the height of the navigation bar */
+		@include transform(translateY(-100%));		
+		@include transition-delay(0ms); 		
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		}
+	
+	&.on-cover nav .navigation-bar:before, 
+	&.on-cover nav .navigation-bar .nav-story-title, 
+	&.on-cover nav .navigation-container.nav-revealed {
+		@include transition-delay($defaultTransitionDuration); 
+		}
+	
+	&.on-cover nav .navigation-bar.nav-revealed:before, 
+	&.on-cover nav .navigation-bar.nav-revealed .nav-story-title, 
+	nav .navigation-bar .nav-story-title {		
+		@include transition-delay(0ms);
+		}	
+
+	.nav-menu-button {
+		.menu-close-button, &.active .menu-button {
+			display: none;
+		}
+		.menu-button, &.active .menu-close-button {
+			display: block;
+		}
+	}						
+
+	.nav-menu-button.active svg {
+		display: none;
+		}	
+		
+	.nav-story-title {
+		@include top-nav-story-title;	
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		position: relative;
+
+		}	
+	
+	nav ol {
+		list-style: none;
+		padding: 0;
+		}
+	
+	nav li {
+		@include top-nav-section-links;
+		}
+	
+	nav li a {
+		border-bottom: none;		
+		}
+	
+	.no-touch & nav li:hover a, 
+	.no-touch & .nav-story-title:hover a {
+		border-bottom: none;
+		}
+	
+	.nav-story-title a:after {
+		content: "\00A0\2191";
+		font-size: 0.75em;
+		opacity: 0;
+		}
+
+	.no-touch & .nav-story-title a:hover:after {
+		opacity: 0.375;
+		}	
+		
+	.nav-icons.horizontal-nav-icons {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 4;
+		width: auto;
+		height: 100%;
+		}
+
+	.nav-icons.horizontal-nav-icons a,  //TODO: surface this as an option????
+	.nav-menu-button {
+		opacity: 0.45;		
+		}
+		
+	.nav-icons.horizontal-nav-icons a {
+		@include display(flex);
+		@include flex-direction(column);
+		@include justify-content(center);
+		font-size: 1rem;
+		height: $topNavBarHeight;
+		float: left;
+		margin-right: 0.75rem; // eyeballed — ideally would be mathematically equal to distance between top of icon and nav bar
+		}
+
+	.nav-icons.horizontal-nav-icons a svg { 
+		display: block;
+		}		
+		
+	.no-touch & .nav-icons.horizontal-nav-icons a:hover {
+		opacity: 1;
+		border-bottom: none;
+		}
+
+	.nav-icons.horizontal-nav-icons a.white-label-logo-link {
+		opacity: 1;
+		}
+
+
+	@media screen and (max-width: $mediumBreakpoint) {
+		
+		.navigation-bar {
+			font-size: 0.85em;
+			}
+
+		}		
+
+	@media screen and (max-width: $smallBreakpoint) {
+		
+		.nav-story-title {
+			display: none;
+			}
+
+		}
+
+	// ICON COLORS
+
+		nav .template-icon path, 
+		.no-touch & nav .template-icon:hover path {
+			stroke: none;
+			fill: $topNavIconColor;
+			}
+
+		nav .template-icon .soundtrack-outer-waves path, 
+		.no-touch & nav .template-icon:hover .soundtrack-outer-waves path, 
+		.template-icon .soundtrack-inner-waves path, 
+		.template-icon:hover .soundtrack-inner-waves path {
+			fill: none;
+			}
+
+		nav .template-icon .soundtrack-inner-waves path, 
+		.no-touch & nav .template-icon:hover .soundtrack-inner-waves path {
+			stroke: $topNavIconColor;
+			}
+
+		nav .template-icon .soundtrack-outer-waves path, 
+		.no-touch & nav .template-icon:hover .soundtrack-outer-waves path {
+			stroke: none;
+			}			
+		
+		nav .nav-menu-button rect, 
+		.no-touch & nav .nav-menu-button:hover rect {
+			fill: none;
+			}	
+
+		&.on-cover nav .template-icon path, 
+		.no-touch &.on-cover nav .template-icon:hover path {
+			fill: $topNavIconColor-onCover;
+			}
+
+		&.on-cover nav .navigation-bar-on-cover-but-visible .template-icon path, 
+		.no-touch &.on-cover nav .navigation-bar-on-cover-but-visible .template-icon:hover path {
+			fill: $topNavIconColor;
+			}			
+
+		.creatavist-logo-icon svg g {
+			fill: $topNavIconColor;
+			}	
+
+		&.on-cover .creatavist-logo-icon svg g {
+			fill: $topNavIconColor-onCover;
+			}
+
+		&.on-cover .navigation-bar-on-cover-but-visible .creatavist-logo-icon svg g {
+			fill: $topNavIconColor;
+			}					
+
+
+	// NAV BAR COLORS
+	
+	nav .navigation-bar:before { /* This is the navigation bar's solid-colored background, which appears once you scroll past the cover. */
+		background-color: $topNavBackgroundColor;
+		}
+	
+	nav .navigation-container {	
+		background-color: $topNavContainerBackgroundColor;
+		}	
+		
+	nav li a {
+		color: $topNavContainerLinkColor;
+		}
+			
+	.nav-story-title, 
+	.nav-story-title a, 
+	.no-touch & nav li:hover a, 
+	.no-touch & .nav-story-title:hover a {
+		color: $alternateTextColor; //change this
+		}	 
+
+	.nav-menu-button.active:before {
+		color: $alternateTextColor; //change this
+		}	
+
+
+	// SPACING FOR CERTAIN CHAPTER TYPES
+
+	&.template-setting-pagination-Paginate .section-cover {
+		padding-top: $topNavBarHeight;	
+		}
+
+	&.template-setting-pagination-Paginate .section-cover .atavist-cover-solid-background {
+		margin-top: -$topNavBarHeight;
+		}
+
+	.chapter-type-1, .chapter-type-10 {
+		@include calc(margin-top, '#{$sectionTopPadding} + #{$topNavBarHeight}');
+		}
+
+	.chapter-type-1 .image-chapter-wrapper, .chapter-type-10 .video-chapter-wrapper {
+		@include calc(margin-top, '-(#{$sectionTopPadding} + #{$topNavBarHeight})');
+		}			
+
+
+	// CREATAVIST ICON 
+
+	.creatavist-logo-icon .logo-outer-wrapper  {
+		position: relative;
+		top: 0.18em;
+		}
+
+	.no-touch & .creatavist-logo-icon .logo-outer-wrapper:hover .logo-wrapper {
+		padding-left: 0.65em;
+		}			
+
+
+	// The opacity of template icons changes when on top of the top nav bar
+
+	& nav .template-icon path, 
+	.no-touch & nav .template-icon:hover path {
+		fill-opacity: 1;
+		}
+
+	nav .template-icon .soundtrack-outer-waves path, 
+	.no-touch & nav .template-icon:hover .soundtrack-outer-waves path, 
+	.template-icon .soundtrack-inner-waves path, 
+	.template-icon:hover .soundtrack-inner-waves path {
+		stroke-width: 1.25;
+		}	
+
+	nav .template-icon .soundtrack-inner-waves path, 
+	.no-touch & nav .template-icon:hover .soundtrack-inner-waves path {
+		stroke-opacity: 1;
+		}
+
+	&.on-cover nav .template-icon path, 
+	.no-touch &.on-cover nav .template-icon:hover path {
+		stroke-width: 0;
+		fill-opacity: 1;
+		}				
+
+	}

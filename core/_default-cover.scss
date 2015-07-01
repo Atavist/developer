@@ -1,0 +1,102 @@
+// DEFAULT COVER
+
+	/* 
+	
+	Set styles for the cover
+	--------------------------------------------------	*/
+
+	.story-cover {
+		position: relative;
+		overflow: hidden;
+		}
+
+	.story-cover.legacy-story-cover {
+		height: 100vh;
+		background-color: $alternateBackgroundColor; /* This essentially serves as a fallback to whatever image is uploaded */
+		background-position: center center; // old styles — probably irrelevant 
+		background-size: cover; // old styles — probably irrelevant 		
+		}
+	
+	.story-cover-with-background-image-or-video:before { /* This effectively adds a dark, translucent screen in front of any uploaded cover image, so that text is more easily readable */
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: " ";
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0,0,0,0.375);
+		z-index: 1;
+		}
+	
+	/* 
+	
+	Styles for background video
+	--------------------------------------------------	*/
+
+	.story-cover-video-container {
+		position: absolute; 
+		top: 0;
+		overflow: hidden;
+		z-index: 0;
+		}
+		
+	.story-cover video { // legacy
+		opacity: 0;
+		}
+
+	.atavist-cover video {
+		opacity: 1;
+		}
+
+
+	// TEXT COLORS
+
+	.cover-title, .cover-subtitle, .byline { /* Cover title, subtitle, and byline color */
+		color: $alternateTextColor;
+		}
+
+
+	/* 
+	
+	Spacing and typographical styles for cover text container
+	---------------------------------------------------------	*/
+
+	.cover-text-container {
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		padding: 2em 0 4.5em;
+		z-index: 2;
+		@media screen and (max-width: $smallBreakpoint) {
+			padding: 2em 0 2em;				
+			}		
+		}
+	
+	.cover-title {
+		font-size: 3rem;
+		font-weight: 600;
+		margin-bottom: 0.125em;
+		@media screen and (max-width: $smallBreakpoint) {
+			font-size: 2.5rem;
+			}
+		}
+	
+	.cover-subtitle {
+		font-size: 1.75rem;
+		font-weight: 200;
+		margin-top: 0;
+		opacity: 0.75;
+		}
+	
+	.byline {
+		@include column-of-text;
+		margin-top: 1em;
+		margin-bottom: 0.5em;
+		padding: 0 $outsidePaddingWidth;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 1em;
+		letter-spacing: 0.03em;
+		padding-top: 1em;
+		opacity: 0.875;
+		}

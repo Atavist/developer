@@ -1,0 +1,130 @@
+@import "build-cover-theme";
+
+
+@mixin mq($breakpoint) {
+    @if $breakpoint == $verySmallBreakpoint {
+        .small-breakpoint & {
+            @content;
+        }
+    }
+    @if $breakpoint == $smallBreakpoint {
+        .medium-breakpoint & {
+            @content;
+        }
+    }   
+    @if $breakpoint == $mediumBreakpoint {
+        .large-breakpoint & {
+            @content;
+        }
+    }        
+    @media screen and (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+.atavist-cover-background-color {
+	background-color: $primaryBackgroundColor;
+}
+
+.atavist-cover-background-color-greeking-gradient {
+	background: -webkit-linear-gradient(to bottom, rgba($primaryBackgroundColor, 0), $primaryBackgroundColor);
+	background: linear-gradient(to bottom, rgba($primaryBackgroundColor, 0), $primaryBackgroundColor);
+}
+
+.atavist-cover-text-color {
+	color: $primaryTextColor;
+}
+
+.atavist-cover-font-sans-serif {
+	font-family: $primaryFontFamily;
+}
+
+.atavist-cover-font-serif {
+	font-family: $secondaryFontFamily;
+}
+
+.atavist-cover-paragraph-font-size {
+	font-size: $paragraphFontSize;
+}
+
+// Heading classes
+
+.atavist-cover-h1 {
+	@include atavist-cover-h1;
+}
+
+.atavist-cover-h2 {
+	@include atavist-cover-h2;
+}
+
+.atavist-cover-byline {
+	@include atavist-cover-byline;
+}
+
+
+// Column width
+
+.atavist-cover-column-width-and-alignment {
+	@include column-of-text(true);
+}
+
+
+// Gutter spacing
+
+.atavist-cover-left-gutter-left {
+	left: $outsideGutterWidth;
+	@include mq($smallBreakpoint) {
+		left: $outsideGutterWidth-compressed;
+	}
+}
+
+.atavist-cover-left-gutter-padding-left {
+	padding-left: $outsideGutterWidth;
+	@include mq($smallBreakpoint) {
+		padding-left: $outsideGutterWidth-compressed;
+	}
+}
+
+.atavist-cover-left-gutter-margin-left {
+	margin-left: $outsideGutterWidth;
+	@include mq($smallBreakpoint) {
+		margin-left: $outsideGutterWidth-compressed;
+	}
+}
+
+.atavist-cover-right-gutter-right {
+	right: $outsideGutterWidth;
+	@include mq($smallBreakpoint) {
+		right: $outsideGutterWidth-compressed;
+	}
+}
+
+.atavist-cover-right-gutter-padding-right {
+	padding-right: $outsideGutterWidth;
+	@include mq($smallBreakpoint) {
+		padding-right: $outsideGutterWidth-compressed;
+	}
+}
+
+.atavist-cover-right-gutter-margin-right {
+	margin-right: $outsideGutterWidth;
+	@include mq($smallBreakpoint) {
+		margin-right: $outsideGutterWidth-compressed;
+	}
+}
+
+body:not(.page-compose) .section-cover .atavist-cover-chapter-padding-top-as-margin-bottom {
+	margin-bottom: $sectionTopPadding;
+	@include mq($smallBreakpoint) {
+		margin-bottom: $sectionTopPadding-smallBreakpoint;
+	}
+}
+
+// Block sizing
+
+.atavist-cover-aligned-block-width-as-max-width {
+	max-width: $alignedBlockWidth;
+	@media screen and (max-width: $smallBreakpoint) {
+		max-width: 100%;
+	}
+}

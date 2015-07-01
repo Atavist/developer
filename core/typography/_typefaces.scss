@@ -1,0 +1,24 @@
+	/* 
+	
+	Choose typefaces
+	--------------------------------------------------	*/
+
+	body {
+		font-family: $defaultFontFamily; 
+		}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $headingFontFamily;
+		}
+
+	.extra p, .caption p {
+		font-family: $captionFontFamily;
+		}
+	
+	p, article li {
+		font-family: $bodyTextFontFamily;
+		}
+
+	blockquote {
+		font-family: $blockquoteFontFamily;
+		}

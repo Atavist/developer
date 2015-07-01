@@ -1,0 +1,5 @@
+// fixes for errant inline styles created in the editor
+span, b, i, strong, em, .chapter a {
+	font-size: inherit !important;
+	line-height: inherit !important;
+}

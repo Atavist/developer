@@ -1,0 +1,16 @@
+
+.template-setting-paragraph-spacing-Spaces {
+
+	p:not(.atavist-caption), pre {
+		text-indent: 0;	
+		margin-top: #{$paragraphLineHeight}em;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+		
+	.text-extra .text-extra-body p:first-child {
+		margin-top: 0;
+		}
+
+	}

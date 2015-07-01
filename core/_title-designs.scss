@@ -1,0 +1,14 @@
+.atavist-cover {
+	position: relative;
+}
+
+.section-cover {
+	margin-top: -$sectionTopPadding;
+	@media screen and (max-width: $smallBreakpoint) {
+		margin-top: -$sectionTopPadding-smallBreakpoint;
+		}	
+}
+
+.empty-title-design {
+	display: none;
+}

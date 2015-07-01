@@ -1,0 +1,63 @@
+// Whitman
+// By Thomas Rhiel
+
+
+// Colors
+
+$primaryBackgroundColor: white;
+$primaryTextColor: rgb(60,60,60);
+
+
+// Typography
+
+$fontSmoothing: antialiased;
+
+$primaryFontFamily: calibre, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$secondaryFontFamily: 'tiempos-text', Georgia, serif;
+
+$paragraphFontSize: 1.1875em;
+$paragraphLineHeight: 1.65;
+
+$fontFamilyMultiplier: 1.175; 
+
+
+// Blocks
+
+$sidebarBlockLineHeight: normal;
+
+
+// Inline block (aka pop-up extras) styles
+
+$popUpBlockPadding: 1px 4px 1px;
+
+@mixin drop-cap-theme {
+	float: left;
+	font-size: 9em;
+	padding-top: 0em;
+	padding-right: 0.05em;
+	margin-bottom: 0;
+	line-height: 0.7;
+	padding-bottom: 0;
+	font-family: $primaryFontFamily;
+	font-weight: 600;
+	margin-top: -0.02em;
+	font-style: normal;
+	}		
+
+
+@mixin theme-junk-drawer {
+	.atavist-pullquote .atavist-caption {
+		padding-top: 0;
+		}		
+	.atavist-pullquote:before {
+		content: "";
+		width: 100%;
+		max-width: 10em;
+		height: 1em;
+		background-color: black;
+		display: block;
+		}
+	.atavist-block-align-center.atavist-pullquote:before {
+		margin: 3rem auto 0;
+		}
+}

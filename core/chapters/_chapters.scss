@@ -1,0 +1,53 @@
+/* 
+
+Set styles for chapters
+--------------------------------------------------	*/
+
+.chapter {
+	position: relative;
+	padding-top: $sectionTopPadding;
+	padding-bottom: $sectionBottomPadding; // this will interfere with two "stacked" sections w/ only section title designs
+	clear: both;
+	@media screen and (max-width: $smallBreakpoint) {
+		padding-top: $sectionTopPadding-smallBreakpoint;
+		padding-bottom: $sectionBottomPadding-smallBreakpoint;
+		}
+	}
+	
+.chapter:last-of-type {
+	padding-bottom: 6rem; // this is in part determined by the height of the creatavist branding and the nav arrows
+	}
+
+.chapter-type-template {
+	padding: 0;
+	}
+
+.chapter-image { // legacy
+	margin-bottom: 4rem;
+	}	
+
+.chapter-title { // legacy
+	margin-top: 0;
+	margin-bottom: 1em;
+	}	
+
+.chapter-subtitle {
+	margin-top: 0em;
+	font-weight: 500;
+	opacity: 0.5;
+}
+
+.chapter-title + .chapter-subtitle {
+	margin-top: -1em;
+}
+
+.chapter-byline {
+	@include column-of-text;
+	margin-top: 1.5rem;
+	margin-bottom: 2rem;
+	font-size: 1.25em;
+}
+
+@import "image-and-video-chapters";
+@import "slideshow-chapters";
+@import "pdf-chapters";

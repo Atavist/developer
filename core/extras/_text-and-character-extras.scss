@@ -1,0 +1,52 @@
+/* 
+
+Set styles for text and character extras
+--------------------------------------------------	*/
+
+.text-extra-title, .character-extra-title {
+	font-size: 1.2em;
+	font-weight: 600;
+	margin-bottom: 0.125em;
+	}
+
+.extra p {
+	padding: 0;
+	font-size: 1em;
+	font-weight: 400;
+	max-width: 100%;
+	}
+
+.text-extra-title, .text-extra p, .character-extra-title, .character-extra p {
+	font-size: 1.2em;
+	line-height: 1.4em;
+	}	
+
+.inline-extra.text-extra.centered, .inline-extra.text-extra.centered .text-extra-body p {
+	width: 60rem;
+	text-align: center;
+	}
+
+.inline-extra.text-extra.centered {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	padding-left: 2em;
+	padding-right: 2em;
+	@media screen and (max-width: $smallBreakpoint) {			
+		padding-left: 0;
+		padding-right: 0;
+		}
+	}
+
+.character-extra img.character-extra-image {
+	width: 200px;
+	float: left;
+	margin-right: 2em;
+	margin-bottom: 1em;
+	@media screen and (max-width: $verySmallBreakpoint) {
+		width: 100%;
+		}
+	}
+
+.character-extra .text-extra-body {
+	padding: 0 0 2rem;
+	}	
