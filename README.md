@@ -26,7 +26,7 @@ $primaryBackgroundColor: white;
 
 Variables exist for both high- and low-level theming decisions. If your theme specifes, for example, only a `$primaryBackgroundColor` and `$primaryTextColor`, other color values — the color of icons, the color of navigational elements, the color of hyperlink underlines — will be inferred. If you’d like to dig deeper, you can do so by defining more specific variables, like `$linkUnderlineColor-h2` (the color of link underlines within h2 elements). 
 
-To see what variables exist, browser our theme variable and mixin [reference doc](#). 
+To see what variables exist, browser our theme variable and mixin [reference doc](http://atavist.github.io/atavist-themes/). 
 
 
 ### Theme mixins
@@ -59,7 +59,7 @@ If you, as a theme creator, would like to change nothing but the Sidebar block�
 		color: #333;
 	}
 
-To see what mixins exist, browse our theme variable and mixin [reference doc](#). 
+To see what mixins exist, browse our theme variable and mixin [reference doc](http://atavist.github.io/atavist-themes/). 
 
 
 ### Adding CSS overrides. 
