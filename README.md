@@ -26,7 +26,7 @@ $primaryBackgroundColor: white;
 
 Variables exist for both high- and low-level theming decisions. If your theme specifes, for example, only a `$primaryBackgroundColor` and `$primaryTextColor`, other color values — the color of icons, the color of navigational elements, the color of hyperlink underlines — will be inferred. If you’d like to dig deeper, you can do so by defining more specific variables, like `$linkUnderlineColor-h2` (the color of link underlines within h2 elements). 
 
-To see what variables exist, browser our theme variable and mixin [reference doc](http://atavist.github.io/atavist-themes/). 
+To see what variables exist, browse our theme variable and mixin [reference doc](http://atavist.github.io/atavist-themes/). 
 
 
 ### Theme mixins
@@ -64,9 +64,9 @@ To see what mixins exist, browse our theme variable and mixin [reference doc](ht
 
 ### Adding CSS overrides. 
 
-You shouldn’t use raw CSS in your themes, but if you absolutely must, you can declare styles inside a special mixin: `theme-junk-drawer`. These styles will be appended to the end of the reader-facing stylesheet. 
+You shouldn’t use raw CSS in your themes, but if you absolutely must, you can declare styles inside a special mixin: `theme-css-overrides`. These styles will be appended to the end of the reader-facing stylesheet. 
 
-	@mixin theme-junk-drawer {	
+	@mixin theme-css-overrides {	
 		/* CSS overrides here */
 	}
 
@@ -80,4 +80,4 @@ You can add fonts from third-party services to your theme. Select a font provide
 
 ### Uploaded fonts
 
-If you have webfont files on hand, you can upload the assets and use the fonts in your theme. Upload the webfont files individually (must be WOFF, TTF, SVG, or EOT files), and give them a font family name, like `Avenir` or `"Helvetica Neue"`. Use the same name for all font files associated with a given font family. Then, in your custom theme Sass, use the font family names just as you would normally in CSS, e.g. `$primaryFontFamily: "My Custom Font", Helvetica, sans-serif;`.
+If you have webfont files on hand, you can upload the assets and use the fonts in your theme. Upload the webfont files individually (must be WOFF, TTF, SVG, or EOT files), and give them a font family name, like `Avenir` or `"Helvetica Neue"`. Use the same name for all font files associatejd with a given font family. Then, in your custom theme Sass, use the font family names just as you would normally in CSS, e.g. `$primaryFontFamily: "My Custom Font", Helvetica, sans-serif;`.
