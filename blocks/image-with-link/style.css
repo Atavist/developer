@@ -1,0 +1,39 @@
+& {
+	display: block;
+}
+.atavist-simple-image-wrapper {
+	min-width: 15rem; /* this is arbitrary */	
+}
+img {
+	width: auto;
+	max-width: 100%;
+	margin: 0 auto;
+	display: block;
+}
+.atavist-simple-image-wrapper-sized {
+	display: table;
+	margin: 0 auto;
+}
+.atavist-simple-image-wrapper-sized .atavist-caption {
+	display: table-caption;
+	caption-side: bottom;
+}
+
+/* aligned image-specific styles */
+&.atavist-block-align-left, &.atavist-block-align-right {
+	width: auto;
+}
+@media screen and (max-width: 567px) {
+	&.atavist-block-align-left, &.atavist-block-align-right {
+		width: 100%;
+	}
+}
+.page-compose .atavist-block-align-left.&, .page-compose .atavist-block-align-right.& {
+	max-width: 75%; /* this is just the normal "width" size of the aligned blocks in the editor */
+	min-width: 18rem; /* this is "big enough so that the block edit buttons fit" */
+}
+
+&.atavist-block-align-full .atavist-cover-aligned-block-width-as-max-width,
+&.atavist-block-align-center .atavist-cover-aligned-block-width-as-max-width {
+	max-width: 100%;
+}

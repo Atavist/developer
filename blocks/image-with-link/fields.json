@@ -1,0 +1,15 @@
+{
+	"the_image": {
+		"label": "Image",
+		"type": "file"
+	},
+	"the_url": {
+		"label": "Link URL",
+		"type": "text",
+		"placeholder": "http://yourlink.com"
+	},
+	"target_same_window": {
+		"label": "Open In Same Window",
+		"type": "checkbox"
+	}
+}
