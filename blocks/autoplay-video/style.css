@@ -1,0 +1,6 @@
+.atavist-simple-video {
+	display: block;
+}
+.atavist-simple-video > video {
+	width:100%;
+}
