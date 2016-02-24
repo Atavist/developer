@@ -16,11 +16,15 @@ Polymer({
 			this.whenInView({
 				enter: function() {
 					/* This event will fire when any part of the video is visible */
-					this.querySelector('atavist-video').play();
+					if (this.querySelector('atavist-video')) {
+						this.querySelector('atavist-video').play();	
+					}
 				},
 				exited: function() {
 					/* This event will fire when the entire video is no longer visible */
-					this.querySelector('atavist-video').pause();
+					if (this.querySelector('atavist-video')) {
+						this.querySelector('atavist-video').pause();
+					}
 				}
 			});	
 		}
